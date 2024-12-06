@@ -6,7 +6,7 @@ import heart from "../../assets/icons/icons8-червы-100.png";
 
 const Header = () => {
   return (
-    <header>
+    <header className={css.header}>
       <NavLink className={css.headerLogoFlex} to={"/"}>
         <img src={logo} alt="logo" />
         <div className={css.headerLogoFlexSitename}>

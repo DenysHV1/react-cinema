@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 25px;
+}
+.dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+.filter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    position: relative;
+}
+.active {
+    transition: 0.2s;
+    background-color: #FF0A1D !important;
+}
+.movies {
+    margin-top: 25px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Адаптивное количество колонок */
+    gap: 25px;
+    justify-content: space-between;
+}
+.movieCard {
+    display: block;
+    width: 130px;
+    height: 200px;
+    position: relative;
+    text-decoration: none;
+}
+.movieCard > img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    cursor: pointer;
+    height: 100%;
+    border-radius: 10px;
+}
+.movieCardRating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    gap: 5px;
+    padding: 3px 0px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.78);
+    width: 100%;
+}
+.movieCard > img:hover {
+    transition: 0.2s ease;
+    opacity: 0.6;
+}
+.movieCardRating > img {
+    display: block;
+    width: 19px;
+    height: 19px;
+}
+

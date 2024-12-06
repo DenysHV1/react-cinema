@@ -1,5 +1,5 @@
-import HeaderBanner from "../../components/HeaderBanner/HeaderBanner";
-import HomeContainer from "../../components/HomeContainer/HomeContainer";
+import HeaderBanner from "../../components/componentsForHomePage/HeaderBanner/HeaderBanner";
+import HomeContainer from "../../components/componentsForHomePage/HomeContainer/HomeContainer";
 
 const HomePage = () => {
   return (

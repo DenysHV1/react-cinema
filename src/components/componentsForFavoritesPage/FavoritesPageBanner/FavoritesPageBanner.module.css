@@ -1,0 +1,28 @@
+.favoritesPageBanner {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    align-items: center;
+}
+.favoritesPageBanner > video {
+    display: block;
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    opacity: 1;
+}
+.favoritesPageBanner > img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    opacity: 0.72;
+}
+.favoritesPageBanner > img:last-child {
+    opacity: 0.52;
+}
+
+

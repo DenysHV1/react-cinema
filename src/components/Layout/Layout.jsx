@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 
 const Layout = () => {
   return (
-    <>
+    <div className="container">
       <Header />
       <main>
         <Suspense fallback={<Loader />}>
@@ -14,7 +14,7 @@ const Layout = () => {
         </Suspense>
       </main>
 	  <Footer/>
-    </>
+    </div>
   );
 };
 

@@ -1,17 +1,32 @@
+import css from "./Footer.module.css";
+
+import { FaFacebook } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
+import { TbBrandYoutubeFilled } from "react-icons/tb";
+import { IoLogoLinkedin } from "react-icons/io5";
+
 const Footer = () => {
   return (
     <footer>
-      <div className="footer__padding">
-        <div className="site__info">
+      <div className={css.footerPadding}>
+        <div className={css.siteInfo}>
           <p>REACT CINEMA</p>
-          <div>
-            <img src="./assets/icons/icons8-facebook-новый-144.png" alt="" />
-            <img src="./assets/icons/icons8-instagram-144.png" alt="" />
-            <img src="./assets/icons/icons8-youtube-144.png" alt="" />
-            <img src="./assets/icons/icons8-линкедин-144.png" alt="" />
+          <div className={css.socialLinkContainer}>
+            <a href="#" target="__blank" className={css.socialLink}>
+              <FaFacebook size={25} style={{ color: "#0866ff" }} />
+            </a>
+            <a href="#" target="__blank" className={css.socialLink}>
+              <RiInstagramFill size={25} style={{ color: "red" }} />
+            </a>
+            <a href="#" target="__blank" className={css.socialLink}>
+              <TbBrandYoutubeFilled size={25} style={{ color: "#ff0033" }} />
+            </a>
+            <a href="#" target="__blank" className={css.socialLink}>
+              <IoLogoLinkedin size={25} style={{ color: "#0a66c2" }} />
+            </a>
           </div>
         </div>
-        <div className="footer__hrefs">
+        <div className={css.footerLinks}>
           <div>
             <p>Main</p>
             <p>Topic</p>

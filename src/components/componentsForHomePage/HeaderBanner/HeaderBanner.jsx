@@ -1,7 +1,7 @@
 import css from "./HeaderBanner.module.css";
 
-import bannerBg from "../../assets/background.jpg";
-import bannerVideo from "../../assets/videos/Титаник (1997) «Titanic» - Трейлер (Trailer) - Что посмотреть_ (1080p, h264).mp4";
+import bannerBg from "../../../assets/background.jpg";
+import bannerVideo from "../../../assets/videos/Титаник (1997) «Titanic» - Трейлер (Trailer) - Что посмотреть_ (1080p, h264).mp4";
 
 const HeaderBanner = () => {
   return (
