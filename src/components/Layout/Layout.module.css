@@ -1,11 +1,12 @@
-.header{
-	height: 50px;
-	margin-bottom: 20px;
+.header {
+  height: 50px;
+  padding-bottom: 55px;
+  border-bottom: 2px solid white;
 }
 
-.logo{
-width: 27px;
-height: 27px;
+.logo {
+  width: 27px;
+  height: 27px;
 }
 
 .nav {
@@ -22,29 +23,21 @@ height: 27px;
   align-items: center;
   justify-content: center;
   gap: 20px;
-
 }
 
-.menuDesctop{
-	display: none;
-	align-items: center;
-	justify-content: center;
-	gap: 140px;
-	/* width: 100%; */
+.menuDesctop {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 140px;
+  /* width: 100%; */
 }
 
-.authNavPC{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-}
-
-.container {
-  max-width: 360px;
-  min-width: 320px;
-  padding: 0 10px;
-  margin: 0 auto;
+.authNavPC {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .activeLink {
@@ -63,54 +56,56 @@ height: 27px;
   gap: 5px;
 }
 
-
-
-.burgerMenu{
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 30px;
-	height: 35px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.burgerMenu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.burgerMenu > svg{
-	color: white;
-	width: 30px;
-	height: 35px;
-  }
-
-.closeMenu{
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	color: white;
-	width: 24px;
-	height: 24px;
+.burgerMenu > svg {
+  color: white;
+  width: 30px;
+  height: 35px;
 }
 
-.closeMenu svg{
-	width: 24px;
-	height: 24px;
+.closeMenu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  width: 24px;
+  height: 24px;
+}
+
+.closeMenu svg {
+  width: 24px;
+  height: 24px;
 }
 
 .mobileMenu {
-	position: absolute;
-	top: 0;
-	right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
   z-index: 999;
-	background-color: rgb(104, 0, 135);
-	height: 50%;
-	border-radius: 5px 0 0 5px;
-	padding: 40px 50px 20px 10px;
-  transform: translateX(120%);
-  transition: transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  background-color: rgb(104, 0, 135);
+  height: 50%;
+  border-radius: 5px 0 0 5px;
+  padding: 40px 50px 20px 10px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .mobileMenu.isOpen {
-  transform: translateX(0);
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
 }
 
 .mobileInner {
@@ -127,6 +122,15 @@ height: 27px;
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
+}
+
+.container {
+  overflow-x: hidden;
+  max-width: 360px;
+  min-width: 320px;
+  padding: 0 10px;
+  margin: 0 auto;
+  border: 2px solid white;
 }
 
 @media screen and (min-width: 480px) {
@@ -149,8 +153,8 @@ height: 27px;
     display: none;
   }
 
-  .menuDesctop{
-	display: flex;
+  .menuDesctop {
+    display: flex;
   }
 }
 

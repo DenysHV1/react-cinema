@@ -1,21 +1,44 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const KEY = "c2643356-4e36-4dbb-b65c-1cc28f60d650";
-
-const instance = axios.create({
-  baseURL: "https://kinopoiskapiunofficial.tech/api/v2.2/films",
-  headers: { "X-API-KEY": KEY, "Content-Type": "application/json" },
-});
+const KEY = "ee3e9c5f4ba904ebcf317d566e2eec32";
+const BASE_URL = "https://api.themoviedb.org";
 
 export const searchPremiersFilms = createAsyncThunk(
-  "premiers/searchPremiers",
+  "top/searchPremiers",
   async (__, thunkAPI) => {
-    try {
-      const state = thunkAPI.getState();
+    const state = thunkAPI.getState();
 
-      const response = await instance.get(`/premieres`, {
-        params: { year: state.films.year, month: state.films.month },
+    try {
+      const params = {
+        api_key: KEY,
+        language: "en-US",
+        page: state.films.page,
+      };
+
+      const response = await axios.get(`${BASE_URL}/3/trending/movie/day`, {
+        params,
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const searchPremiersFilmsByPage = createAsyncThunk(
+  "top/searchTopByPage",
+  async (page, thunkAPI) => {
+    try {
+      const params = {
+        api_key: KEY,
+        language: "en-US",
+        page: page,
+      };
+
+      const response = await axios.get(`${BASE_URL}/3/trending/movie/day`, {
+        params,
       });
       return response.data;
     } catch (error) {
@@ -23,3 +46,18 @@ export const searchPremiersFilms = createAsyncThunk(
     }
   }
 );
+
+
+export const searchDetailsAboutFilmByID = createAsyncThunk('details/searchDetailsByID', async(id, thunkAPI) => {
+  try {
+    const params = {
+      api_key: KEY,
+      language: "en-US",
+    }
+    const response = await axios.get(`${BASE_URL}/3/movie/${id}`, {params});
+
+    return response.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+})
