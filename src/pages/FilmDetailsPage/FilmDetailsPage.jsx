@@ -31,13 +31,10 @@ const FilmDetails = () => {
   const location = useLocation();
   const backLink = useRef(location.state || "/");
 
-  const prevFilmID = useRef(null);
+
 
   useEffect(() => {
-    if (filmID !== prevFilmID.current) {
-      prevFilmID.current = filmID;
       dispatch(searchDetailsAboutFilmByID(filmID));
-    }
   }, [dispatch, filmID]);
 
   console.log(filmData);
