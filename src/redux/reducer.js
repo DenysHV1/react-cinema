@@ -54,13 +54,20 @@ const filmsSlice = createSlice({
     closeMenu: (state) => {
       state.isOpen = false;
     },
-	setVariant: (state, {payload}) => {
-		state.filterVariant = payload
-	}
+    setVariant: (state, { payload }) => {
+      state.filterVariant = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-
+      //1.searchDetailsAboutFilmByID
+      .addCase(searchDetailsAboutFilmByID.pending, progressIsPending)
+      .addCase(searchDetailsAboutFilmByID.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = false;
+          state.filmDetails = payload;
+      })
+      .addCase(searchDetailsAboutFilmByID.rejected, resultIsRejected)
       //todo 2. PREMIERS FILMS/TOP------------------------------
       .addCase(searchPremiersFilms.pending, progressIsPending)
       .addCase(searchPremiersFilms.fulfilled, resultFulfilled)
@@ -104,18 +111,7 @@ const filmsSlice = createSlice({
       //* 6.UPCOMING BY PAGE/TOP
       .addCase(searchUpcomingByPage.pending, progressIsPending)
       .addCase(searchUpcomingByPage.fulfilled, resultFulfilledByPage)
-      .addCase(searchUpcomingByPage.rejected, resultIsRejected)
-
-      //1.searchDetailsAboutFilmByID
-      .addCase(searchDetailsAboutFilmByID.pending, progressIsPending)
-      .addCase(searchDetailsAboutFilmByID.fulfilled, (state, {payload}) => {
-		state.isLoading = false;
-		state.isError = false;
-		console.log(payload);
-		
-		state.filmDetails = payload
-	  })
-      .addCase(searchDetailsAboutFilmByID.rejected, resultIsRejected);
+      .addCase(searchUpcomingByPage.rejected, resultIsRejected);
   },
 });
 

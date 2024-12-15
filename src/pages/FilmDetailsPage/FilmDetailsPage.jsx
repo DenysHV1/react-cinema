@@ -16,11 +16,14 @@ import {
 } from "../../redux/helpSettings";
 
 //icons
-import { CiStar } from "react-icons/ci";
 import { FcLike } from "react-icons/fc";
+import { TbArrowBigLeftLines } from "react-icons/tb";
+import { FaStar } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
 
 const FilmDetails = () => {
   const [rating, setRating] = useState([]);
+  const [emptyStars, setEmptyStars] = useState([]);
   const { filmID } = useParams();
 
   const filmData = useSelector(filmDetailsSelector);
@@ -28,8 +31,13 @@ const FilmDetails = () => {
   const location = useLocation();
   const backLink = useRef(location.state || "/");
 
+  const prevFilmID = useRef(null);
+
   useEffect(() => {
-    dispatch(searchDetailsAboutFilmByID(filmID));
+    if (filmID !== prevFilmID.current) {
+      prevFilmID.current = filmID;
+      dispatch(searchDetailsAboutFilmByID(filmID));
+    }
   }, [dispatch, filmID]);
 
   console.log(filmData);
@@ -55,27 +63,39 @@ const FilmDetails = () => {
   } = filmData;
 
   useEffect(() => {
-    //stars
     if (vote_average) {
       const ratingInner = [];
       const value = Math.ceil(vote_average);
+  
       for (let i = 1; i <= value; i += 1) {
         ratingInner.push(i);
       }
       setRating(ratingInner);
+  
+      const emptyStarsInner = [];
+      const value2 = 10 - value;
+      for (let i = 1; i <= value2; i++) {
+        emptyStarsInner.push(i);
+      }
+      setEmptyStars(emptyStarsInner);
     }
-  }, [vote_average]);
+  }, [vote_average]); 
 
   return (
     <>
       <section className={s.page_film_info} id={id}>
-        <Link to={backLink.current}>Go back</Link>
-        <h1 className={s.title}>{original_title ? original_title : title}</h1>
+        <div className={s.title_link_container}>
+          <Link to={backLink.current} className={s.back_link}>
+            <TbArrowBigLeftLines className={s.back_item} />{" "}
+          </Link>
+          <h1 className={s.title}>{title ? title : original_title}</h1>
+        </div>
+
         <div className={s.top_info}>
           <div className={s.poster_container}>
             <img
               src={poster_path ? `${imgLink}${poster_path}` : emptyPoster}
-              alt={original_title ? original_title : title}
+              alt={title ? title : original_title}
             />
             {popularity && (
               <div className={s.popularity_container}>
@@ -86,36 +106,48 @@ const FilmDetails = () => {
           </div>
           <div className={s.top_film_details}>
             {vote_average && (
-              <div className={s.rating_container}>
-                <p className={s.rating_title}>Rating: </p>
-                {rating.length > 0 &&
-                  rating.map((item) => (
-                    <button key={item} type="button" className={s.button_star}>
-                      <CiStar className={s.star} />
-                    </button>
-                  ))}
+              <div className={s.details_item_container}>
+                <h3 className={s.title_h3}>Rating: </h3>
+                <ul className={s.rating_list}>
+                  {rating.length > 0 &&
+                    rating.map((item) => (
+                      <li key={`${item}full`} className={s.rating_item}>
+                        <button type="button" className={s.button_star}>
+                          <FaStar className={s.star1} />
+                        </button>
+                      </li>
+                    ))}
+                  {emptyStars.length > 0 &&
+                    emptyStars.map((item) => (
+                      <li key={`${item}empty`} className={s.rating_item}>
+                        <button type="button" className={s.button_star}>
+                          <CiStar className={s.star2} />
+                        </button>
+                      </li>
+                    ))}
 
-                <p className={s.star_value}>{vote_average}</p>
+                  <li className={s.star_value}>{Math.ceil(vote_average)}</li>
+                </ul>
               </div>
             )}
             {tagline && (
-              <div className={s.slogan_container}>
-                <p className={s.slogan_title}>Slogan: </p>
+              <div className={s.details_item_container}>
+                <h3 className={s.title_h3}>Slogan: </h3>
                 <p className={s.slogan_text}>{tagline}</p>
               </div>
             )}
             {release_date && (
-              <div className={s.release_container}>
-                <p className={s.release_title}>Release date: </p>
+              <div className={s.details_item_container}>
+                <h3 className={s.title_h3}>Release date: </h3>
                 <p className={s.release_text}>{release_date}</p>
               </div>
             )}
             {production_countries?.length > 0 && production_countries ? (
-              <div className={s.country_container}>
+              <div className={s.details_item_container}>
                 {production_countries?.length > 1 ? (
-                  <p className={s.country_title}>Countries: </p>
+                  <h3 className={s.title_h3}>Countries: </h3>
                 ) : (
-                  <p className={s.country_title}>Country: </p>
+                  <h3 className={s.title_h3}>Country: </h3>
                 )}
                 <ul className={s.country_list}>
                   {production_countries?.map(({ iso_3166_1, name }) => (
@@ -126,11 +158,11 @@ const FilmDetails = () => {
                 </ul>
               </div>
             ) : (
-              <div className={s.country_container}>
+              <div className={s.details_item_container}>
                 {origin_country?.length > 1 ? (
-                  <p className={s.country_title}>Countries: </p>
+                  <h3 className={s.title_h3}>Countries: </h3>
                 ) : (
-                  <p className={s.country_title}>Country: </p>
+                  <h3 className={s.title_h3}>Country: </h3>
                 )}
                 <ul className={s.country_list}>
                   {origin_country?.map((item) => (
@@ -142,8 +174,8 @@ const FilmDetails = () => {
               </div>
             )}
             {budget && (
-              <div className={s.budget_container}>
-                <p className={s.budget_title}>Budget: </p>
+              <div className={s.details_item_container}>
+                <h3 className={s.title_h3}>Budget: </h3>
                 <p className={s.budget_text}>
                   {budget}
                   <span>&#36;</span>
@@ -151,8 +183,8 @@ const FilmDetails = () => {
               </div>
             )}
             {genres?.length > 0 && (
-              <div className={s.genre_container}>
-                <p className={s.genre_title}>Genre: </p>
+              <div className={s.details_item_container}>
+                <h3 className={s.title_h3}>Genre: </h3>
                 <ul className={s.genre_list}>
                   {genres?.map(({ id, name }) => (
                     <li key={id}>{name}</li>
@@ -161,21 +193,21 @@ const FilmDetails = () => {
               </div>
             )}
             {adult && (
-              <div className={s.ageLimit_container}>
-                <p className={s.ageLimit_title}>Age limit: </p>
+              <div className={s.details_item_container}>
+                <h3 className={s.title_h3}>Age limit: </h3>
                 <p className={s.ageLimit_text}>18+</p>
               </div>
             )}
             {runtime && (
-              <div className={s.runtime_container}>
-                <p className={s.runtime_container}>Runtime: </p>
+              <div className={s.details_item_container}>
+                <h3 className={s.title_h3}>Runtime: </h3>
                 <p className={s.runtime_text}>{`${runtime} min.`}</p>
               </div>
             )}
             {status && (
-              <div className={s.status_container}>
-                <p className={s.status_title}>Status: </p>
-                <p className={s.status_text}>{status}</p>
+              <div className={s.details_item_container}>
+                <h3 className={s.title_h3}>Status: </h3>
+                <p className={status === "Released" ? s.status_text_rel : s.status_text_no}>{status}</p>
               </div>
             )}
           </div>
@@ -194,9 +226,6 @@ const FilmDetails = () => {
                         alt={name ? name : origin_country}
                       />
                     </div>
-                    <p className={s.companies_name}>
-                      {name ? name : "Hidden company"}
-                    </p>
                   </li>
                 )
               )}
