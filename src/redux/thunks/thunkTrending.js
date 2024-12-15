@@ -1,19 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { BASE_URL, KEY } from "../helpSettings";
 import axios from "axios";
 
-const KEY = "ee3e9c5f4ba904ebcf317d566e2eec32";
-const BASE_URL = "https://api.themoviedb.org";
-
 export const searchPremiersFilms = createAsyncThunk(
-  "top/searchPremiers",
+  "top/searchTrending",
   async (__, thunkAPI) => {
-    const state = thunkAPI.getState();
-
     try {
       const params = {
         api_key: KEY,
         language: "en-US",
-        page: state.films.page,
+        page: 1,
       };
 
       const response = await axios.get(`${BASE_URL}/3/trending/movie/day`, {
@@ -28,7 +24,7 @@ export const searchPremiersFilms = createAsyncThunk(
 );
 
 export const searchPremiersFilmsByPage = createAsyncThunk(
-  "top/searchTopByPage",
+  "top/searchTrendingByPage",
   async (page, thunkAPI) => {
     try {
       const params = {
@@ -46,18 +42,3 @@ export const searchPremiersFilmsByPage = createAsyncThunk(
     }
   }
 );
-
-
-export const searchDetailsAboutFilmByID = createAsyncThunk('details/searchDetailsByID', async(id, thunkAPI) => {
-  try {
-    const params = {
-      api_key: KEY,
-      language: "en-US",
-    }
-    const response = await axios.get(`${BASE_URL}/3/movie/${id}`, {params});
-
-    return response.data
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message)
-  }
-})

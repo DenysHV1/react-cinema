@@ -1,7 +1,11 @@
 import s from "./Layout.module.css";
 
-//components
-import Loader from "../Loader/Loader";
+//hooks
+import { useDispatch, useSelector } from "react-redux";
+
+//redux
+import { isOpenSelector } from "../../redux/selectors";
+import { closeMenu, toggleMenu } from "../../redux/reducer";
 
 //router
 import { Suspense } from "react";
@@ -14,13 +18,8 @@ import { TbLogout2 } from "react-icons/tb";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { SiReactos } from "react-icons/si";
 
-//redux
-import { useDispatch, useSelector } from "react-redux";
-import { isOpenSelector } from "../../redux/pagesLogic/pagesSelectors";
-import {
-  closeMenu,
-  toggleMenu,
-} from "../../redux/pagesLogic/pagesLogicReducer";
+//components
+import Loader from "../Loader/Loader";
 
 const Layout = () => {
   const activeLink = ({ isActive }) => {

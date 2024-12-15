@@ -1,1 +1,0 @@
-export const isOpenSelector = state => state.base.isOpen
