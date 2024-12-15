@@ -10,7 +10,7 @@ import { isErrorSelector } from "../../redux/selectors";
 
 //components
 import Error from "../Error/Error";
-import ButtonsList from "../buttonsList/buttonsList";
+import ButtonsList from "../ButtonsList/ButtonsListCinema";
 
 
 const FilmsList = ({ films = [], }) => {

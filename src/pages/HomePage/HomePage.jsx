@@ -10,7 +10,7 @@ import FilmsList from "../../components/FilmsList/FilmsList";
 import PopularFilmsFilter from "../../components/PopularFilmsFilter/PopularFilmsFilter";
 
 import { useSelector } from "react-redux";
-import ButtonsList from "../../components/buttonsList/buttonsList";
+import ButtonsList from "../../components/ButtonsList/ButtonsListCinema"
 
 const HomePage = () => {
   const films = useSelector(filmsSelector);
