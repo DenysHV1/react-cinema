@@ -59,24 +59,24 @@ const FilmDetails = () => {
     adult,
   } = filmData;
 
-  // useEffect(() => {
-  //   if (vote_average) {
-  //     const ratingInner = [];
-  //     const value = Math.ceil(vote_average);
+  useEffect(() => {
+    if (vote_average) {
+      const ratingInner = [];
+      const value = Math.ceil(vote_average);
   
-  //     for (let i = 1; i <= value; i += 1) {
-  //       ratingInner.push(i);
-  //     }
-  //     setRating(ratingInner);
+      for (let i = 1; i <= value; i += 1) {
+        ratingInner.push(i);
+      }
+      setRating(ratingInner);
   
-  //     const emptyStarsInner = [];
-  //     const value2 = 10 - value;
-  //     for (let i = 1; i <= value2; i++) {
-  //       emptyStarsInner.push(i);
-  //     }
-  //     setEmptyStars(emptyStarsInner);
-  //   }
-  // }, [vote_average]); 
+      const emptyStarsInner = [];
+      const value2 = 10 - value;
+      for (let i = 1; i <= value2; i++) {
+        emptyStarsInner.push(i);
+      }
+      setEmptyStars(emptyStarsInner);
+    }
+  }, [vote_average]); 
 
   return (
     <>
