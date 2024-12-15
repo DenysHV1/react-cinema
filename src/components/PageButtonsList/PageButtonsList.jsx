@@ -31,27 +31,25 @@ const PageButtonsList = () => {
   const dispatch = useDispatch();
 
   const handleChangePage = (item) => {
-    if (variant) {
-      switch (variant) {
-        case "NOW_PLAYING":
-          dispatch(searchNuwPlayingByPage(item));
-          break;
-        case "POPULAR":
-          dispatch(searchPopularByPage(item));
-          break;
-        case "TOP_RATED":
-          dispatch(searchTopRatedByPage(item));
-          break;
-        case "UPCOMING":
-          dispatch(searchUpcomingByPage(item));
-          break;
-        case "PREMIERS":
-          dispatch(searchPremiersFilmsByPage(item));
-          break;
-        default:
-          dispatch(searchPremiersFilmsByPage(item));
-          break;
-      }
+    switch (variant) {
+      case "NOW_PLAYING":
+        dispatch(searchNuwPlayingByPage(item));
+        break;
+      case "POPULAR":
+        dispatch(searchPopularByPage(item));
+        break;
+      case "TOP_RATED":
+        dispatch(searchTopRatedByPage(item));
+        break;
+      case "UPCOMING":
+        dispatch(searchUpcomingByPage(item));
+        break;
+      case "PREMIERS":
+        dispatch(searchPremiersFilmsByPage(item));
+        break;
+      default:
+        dispatch(searchPremiersFilmsByPage(item));
+        break;
     }
   };
 
