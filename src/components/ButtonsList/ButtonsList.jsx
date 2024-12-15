@@ -1,4 +1,4 @@
-import s from "./pageButtonsList.module.css";
+import s from "./ButtonsList.module.css";
 //redux
 import {
   filterVariantSelector,
@@ -15,7 +15,7 @@ import {
 } from "../../redux/thunks/thunkFilteredTopFilms";
 import { searchPremiersFilmsByPage } from "../../redux/thunks/thunkTrending";
 
-const PageButtonsList = () => {
+const ButtonsList = () => {
   const totalPages = useSelector(totalPagesSelector);
   const variant = useSelector(filterVariantSelector);
   const [pages, setPages] = useState([]);
@@ -81,4 +81,4 @@ const PageButtonsList = () => {
   );
 };
 
-export default PageButtonsList;
+export default ButtonsList;

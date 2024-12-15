@@ -10,7 +10,8 @@ import { isErrorSelector } from "../../redux/selectors";
 
 //components
 import Error from "../Error/Error";
-import PageButtonsList from "../pageButtonsList/pageButtonsList";
+import ButtonsList from "../buttonsList/buttonsList";
+
 
 const FilmsList = ({ films = [], }) => {
   const error = useSelector(isErrorSelector);
@@ -49,7 +50,7 @@ const FilmsList = ({ films = [], }) => {
           </li>
         )}
       </ul>
-      <PageButtonsList />
+      <ButtonsList />
     </>
   );
 };

@@ -10,7 +10,7 @@ import FilmsList from "../../components/FilmsList/FilmsList";
 import PopularFilmsFilter from "../../components/PopularFilmsFilter/PopularFilmsFilter";
 
 import { useSelector } from "react-redux";
-import PageButtonsList from "../../components/pageButtonsList/pageButtonsList";
+import ButtonsList from "../../components/buttonsList/buttonsList";
 
 const HomePage = () => {
   const films = useSelector(filmsSelector);
@@ -21,7 +21,7 @@ const HomePage = () => {
       <HeaderBanner />
       <PopularFilmsFilter />
       <section className={s.section}>
-        <PageButtonsList />
+        <ButtonsList />
         {loading && <Loader />}
         <FilmsList films={films} />
       </section>
