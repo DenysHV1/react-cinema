@@ -20,6 +20,11 @@ import { FcLike } from "react-icons/fc";
 import { TbArrowBigLeftLines } from "react-icons/tb";
 import { FaStar } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
+import AlternativeTitles from "../../components/FilmDetailsComponents/AlternativeTitle/AlternativeTitle";
+import { showTitlesReducer } from "../../redux/filmDetails/filmDetailsReducers";
+import { moreTitlesSelector } from "../../redux/filmDetails/filmDetailsSelectors";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import FilmVideos from "../../components/FilmDetailsComponents/FilmVideos/FilmVideos";
 
 const FilmDetails = () => {
   const [rating, setRating] = useState([]);
@@ -31,13 +36,11 @@ const FilmDetails = () => {
   const location = useLocation();
   const backLink = useRef(location.state || "/");
 
-
+  const showTitles = useSelector(moreTitlesSelector);
 
   useEffect(() => {
-      dispatch(searchDetailsAboutFilmByID(filmID));
+    dispatch(searchDetailsAboutFilmByID(filmID));
   }, [dispatch, filmID]);
-
-  console.log(filmData);
 
   const {
     budget,
@@ -63,12 +66,12 @@ const FilmDetails = () => {
     if (vote_average) {
       const ratingInner = [];
       const value = Math.ceil(vote_average);
-  
+
       for (let i = 1; i <= value; i += 1) {
         ratingInner.push(i);
       }
       setRating(ratingInner);
-  
+
       const emptyStarsInner = [];
       const value2 = 10 - value;
       for (let i = 1; i <= value2; i++) {
@@ -76,7 +79,7 @@ const FilmDetails = () => {
       }
       setEmptyStars(emptyStarsInner);
     }
-  }, [vote_average]); 
+  }, [vote_average]);
 
   return (
     <>
@@ -85,7 +88,25 @@ const FilmDetails = () => {
           <Link to={backLink.current} className={s.back_link}>
             <TbArrowBigLeftLines className={s.back_item} />{" "}
           </Link>
-          <h1 className={s.title}>{title ? title : original_title}</h1>
+          <div className={s.titles_container}>
+            <h1 className={s.title}>{title ? title : original_title}</h1>
+            {showTitles ? (
+              <button
+                type="button"
+                onClick={() => dispatch(showTitlesReducer())}
+              >
+                <IoIosArrowBack className={s.showTitles} />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => dispatch(showTitlesReducer())}
+              >
+                <IoIosArrowForward className={s.showTitles} />
+              </button>
+            )}
+            {showTitles && <AlternativeTitles filmID={filmID} />}
+          </div>
         </div>
 
         <div className={s.top_info}>
@@ -204,7 +225,13 @@ const FilmDetails = () => {
             {status && (
               <div className={s.details_item_container}>
                 <h3 className={s.title_h3}>Status: </h3>
-                <p className={status === "Released" ? s.status_text_rel : s.status_text_no}>{status}</p>
+                <p
+                  className={
+                    status === "Released" ? s.status_text_rel : s.status_text_no
+                  }
+                >
+                  {status}
+                </p>
               </div>
             )}
           </div>
@@ -236,6 +263,7 @@ const FilmDetails = () => {
           </p>
         </div>
       </section>
+      <FilmVideos filmID={filmID} />
     </>
   );
 };

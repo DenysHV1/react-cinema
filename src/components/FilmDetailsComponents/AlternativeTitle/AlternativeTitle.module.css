@@ -1,0 +1,30 @@
+.title {
+  position: relative;
+  font-size: 25px;
+  line-height: 1;
+  color: rgb(161, 161, 161);
+  border-bottom: 1px solid white;
+}
+
+.title > span {
+  position: absolute;
+  font-size: 10px;
+  color: black;
+  top: -10px;
+  right: -15px;
+  background-color: rgb(255, 255, 255);
+  padding: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 30px;
+    line-height: 1;
+    border-bottom: 1px solid white;
+  }
+
+  .title > span {
+    right: -15px;
+    top: -10px;
+  }
+}

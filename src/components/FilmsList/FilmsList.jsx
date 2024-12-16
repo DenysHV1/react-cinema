@@ -12,13 +12,9 @@ import { isErrorSelector } from "../../redux/selectors";
 import Error from "../Error/Error";
 import ButtonsList from "../ButtonsList/ButtonsListCinema";
 
-
-const FilmsList = ({ films = [], }) => {
+const FilmsList = ({ films = [] }) => {
   const error = useSelector(isErrorSelector);
   const location = useLocation();
-
-  console.log(films);
-  
 
   return (
     <>
