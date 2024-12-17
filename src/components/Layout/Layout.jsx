@@ -20,7 +20,7 @@ import { SiReactos } from "react-icons/si";
 
 //components
 import Loader from "../Loader/Loader";
-import SearchFilms from "../searchFilms/searchFilms";
+import SearchFilms from "../SearchFilms/SearchFilms";
 
 const Layout = () => {
   const activeLink = ({ isActive }) => {
