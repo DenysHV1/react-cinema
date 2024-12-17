@@ -1,4 +1,4 @@
-import css from "./searchFilms.module.css";
+import css from "./SearcherFilms.module.css";
 import { ImSearch } from "react-icons/im";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";

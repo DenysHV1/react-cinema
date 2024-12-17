@@ -20,7 +20,7 @@ import { SiReactos } from "react-icons/si";
 
 //components
 import Loader from "../Loader/Loader";
-import SearchFilms from "../SearchFilms/SearchFilms";
+import SearcherFilms from "../SearcherFilms/SearcherFilms";
 
 const Layout = () => {
   const activeLink = ({ isActive }) => {
@@ -68,7 +68,7 @@ const Layout = () => {
             <TiThMenuOutline />
           </button>
         </nav>
-        <SearchFilms />
+        <SearcherFilms />
         <div
           className={
             isOpenModal ? [s.mobileMenu, s.isOpen].join(" ") : s.mobileMenu
