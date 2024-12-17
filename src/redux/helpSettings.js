@@ -6,5 +6,7 @@ export const emptyCompany =
 export const emptyTextInfo =
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui voluptates nihil modi reiciendis ipsam. Soluta repellendus adipisci, autem voluptatem blanditiis fuga ad, expedita eveniet, ullam quos corrupti delectus provident excepturi";
 
+export const emptyUserImg = 'https://as1.ftcdn.net/v2/jpg/03/53/11/00/1000_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'
+ 
 export const KEY = "ee3e9c5f4ba904ebcf317d566e2eec32";
 export const BASE_URL = "https://api.themoviedb.org";

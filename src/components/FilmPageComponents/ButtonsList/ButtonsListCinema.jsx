@@ -3,7 +3,7 @@ import s from "./ButtonsList.module.css";
 import {
   filterVariantSelector,
   totalPagesSelector,
-} from "../../redux/selectors";
+} from "../../../redux/filmsPage/selectors";
 //hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,12 +12,13 @@ import {
   searchPopularByPage,
   searchTopRatedByPage,
   searchUpcomingByPage,
-} from "../../redux/thunks/thunkFilteredTopFilms";
-import { searchPremiersFilmsByPage } from "../../redux/thunks/thunkTrending";
+} from "../../../redux/filmsPage/thunkFilteredTopFilms";
+import { searchPremiersFilmsByPage } from "../../../redux/filmsPage/thunkTrending";
 
 const ButtonsList = () => {
   const totalPages = useSelector(totalPagesSelector);
   const variant = useSelector(filterVariantSelector);
+
   const [pages, setPages] = useState([]);
 
   useEffect(() => {

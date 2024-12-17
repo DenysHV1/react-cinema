@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import s from "./PopularFilmsFilter.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPremiersFilms } from "../../redux/thunks/thunkTrending";
+import { searchPremiersFilms } from "../../../redux/filmsPage/thunkTrending";
 import {
   searchNuwPlaying,
   searchPopular,
   searchTopRated,
   searchUpcoming,
-} from "../../redux/thunks/thunkFilteredTopFilms";
-import { filterVariantSelector } from "../../redux/selectors";
-import { setVariant } from "../../redux/reducer";
+} from "../../../redux/filmsPage/thunkFilteredTopFilms";
+import { filterVariantSelector } from "../../../redux/filmsPage/selectors";
+import { setVariant } from "../../../redux/filmsPage/reducer";
 
 const PopularFilmsFilter = () => {
   

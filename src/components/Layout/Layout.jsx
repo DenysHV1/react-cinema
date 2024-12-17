@@ -4,8 +4,8 @@ import s from "./Layout.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
 //redux
-import { isOpenSelector } from "../../redux/selectors";
-import { closeMenu, toggleMenu } from "../../redux/reducer";
+import { isOpenSelector } from "../../redux/filmsPage/selectors";
+import { closeMenu, toggleMenu } from "../../redux/filmsPage/reducer";
 
 //router
 import { Suspense } from "react";
@@ -13,13 +13,14 @@ import { NavLink, Outlet } from "react-router";
 
 //icons
 import { TiThMenuOutline } from "react-icons/ti";
-import { BiLogIn } from "react-icons/bi";
-import { TbLogout2 } from "react-icons/tb";
+// import { BiLogIn } from "react-icons/bi";
+// import { TbLogout2 } from "react-icons/tb";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { SiReactos } from "react-icons/si";
 
 //components
 import Loader from "../Loader/Loader";
+import SearchFilms from "../searchFilms/searchFilms";
 
 const Layout = () => {
   const activeLink = ({ isActive }) => {
@@ -46,7 +47,7 @@ const Layout = () => {
                 </NavLink>
               </li>
             </ul>
-            <ul className={s.authNavPC}>
+            {/* <ul className={s.authNavPC}>
               <li>
                 <NavLink to={"/login"} className={activeLink}>
                   <BiLogIn /> Login
@@ -57,7 +58,7 @@ const Layout = () => {
                   <TbLogout2 /> Register
                 </NavLink>
               </li>
-            </ul>
+            </ul> */}
           </div>
 
           <button
@@ -67,6 +68,7 @@ const Layout = () => {
             <TiThMenuOutline />
           </button>
         </nav>
+        <SearchFilms />
         <div
           className={
             isOpenModal ? [s.mobileMenu, s.isOpen].join(" ") : s.mobileMenu
@@ -86,7 +88,7 @@ const Layout = () => {
             <NavLink to={"/films"} className={activeLink}>
               Films
             </NavLink>
-            <ul className={s.authPagesMobile}>
+            {/* <ul className={s.authPagesMobile}>
               <li>
                 <NavLink to={"/login"} className={activeLink}>
                   <BiLogIn /> Login
@@ -98,7 +100,7 @@ const Layout = () => {
                   Register
                 </NavLink>
               </li>
-            </ul>
+            </ul> */}
           </nav>
         </div>
       </header>

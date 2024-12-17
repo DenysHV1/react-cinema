@@ -1,11 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { alternativeTitlesThunk, filmVideosThunk } from "./filmDetailsThunks";
+import {
+  alternativeTitlesThunk,
+  filmVideosThunk,
+  reviewsThunk,
+  searchDetailsAboutFilmByID,
+} from "./filmDetailsThunks";
 
 const initialState = {
+  filmDetails: {},
   alternative_titles: [],
   showTitles: false,
   filmDetailsError: false,
   filmVideos: [],
+  reviews: [],
 };
 
 const filmDetailsPending = (state) => {
@@ -26,6 +33,13 @@ const filmDetailsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(searchDetailsAboutFilmByID.pending, filmDetailsPending)
+      .addCase(searchDetailsAboutFilmByID.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.filmDetails = payload;
+      })
+      .addCase(searchDetailsAboutFilmByID.rejected, filmDetailsRejected)
       .addCase(alternativeTitlesThunk.pending, filmDetailsPending)
       .addCase(alternativeTitlesThunk.fulfilled, (state, { payload }) => {
         state.filmDetailsError = false;
@@ -37,7 +51,13 @@ const filmDetailsSlice = createSlice({
         state.filmDetailsError = false;
         state.filmVideos = payload.results;
       })
-      .addCase(filmVideosThunk.rejected, filmDetailsRejected);
+      .addCase(filmVideosThunk.rejected, filmDetailsRejected)
+      .addCase(reviewsThunk.pending, filmDetailsPending)
+      .addCase(reviewsThunk.fulfilled, (state, {payload}) => {
+        state.reviews = payload.results;
+        state.filmDetailsError = false;
+      })
+      .addCase(reviewsThunk.rejected, filmDetailsRejected)
   },
 });
 

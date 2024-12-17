@@ -2,7 +2,7 @@
 	films: [],
 	page: 1,
 	total_pages: 0,
-	filmDetails: {},
+
 	isLoading: false,
 	isError: false,
 	isOpen: false,

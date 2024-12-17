@@ -1,0 +1,88 @@
+.reviews_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 30px;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.reviews_item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  background-color: aliceblue;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.img_container {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: beige;
+  border: 2px solid black;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  transition: transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  cursor: pointer;
+}
+
+.img_container:hover {
+  transform: scale(1.1);
+}
+
+.img_container:focus {
+  transform: scale(1.1);
+}
+
+.img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.top_info_container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.rating {
+  position: absolute;
+  bottom: 5px;
+  left: 9px;
+  font-weight: 900;
+  background-color: black;
+  color: black;
+  padding: 3px;
+  border-radius: 3px;
+  border: 2px solid red;
+  display: flex;
+  gap: 5px;
+  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
+    0 0 3px #ff9900, 0 0 3px #ff6600;
+}
+
+.rating > span {
+  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
+    0 0 3px #ff9900, 0 0 3px #ff6600;
+  color: rgb(32, 13, 85);
+}
+
+.name_data {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}

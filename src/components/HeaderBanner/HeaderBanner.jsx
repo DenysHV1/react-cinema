@@ -6,7 +6,7 @@ import bannerBg from './background.jpg'
 
 const HeaderBanner = () => {
   return (
-    <div className={css.headerBanner}>
+    <section className={css.headerBanner}>
       <div>
         <p>REACT CINEMA</p>
         <p>
@@ -21,7 +21,7 @@ const HeaderBanner = () => {
         <source src={bannerVideo} type="video/mp4" />
       </video>
       <img src={bannerBg} alt="banner background" />
-    </div>
+    </section>
   );
 };
 

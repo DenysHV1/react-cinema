@@ -3,8 +3,7 @@ import initialState from "./initialState";
 import {
   searchPremiersFilms,
   searchPremiersFilmsByPage,
-} from "./thunks/thunkTrending";
-import { searchDetailsAboutFilmByID } from "./thunks/thinkFilmDetails";
+} from "./thunkTrending";
 import {
   searchNuwPlaying,
   searchNuwPlayingByPage,
@@ -14,7 +13,7 @@ import {
   searchTopRatedByPage,
   searchUpcoming,
   searchUpcomingByPage,
-} from "./thunks/thunkFilteredTopFilms";
+} from "./thunkFilteredTopFilms";
 
 const progressIsPending = (state) => {
   state.isLoading = true;
@@ -60,14 +59,9 @@ const filmsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      //1.searchDetailsAboutFilmByID
-      .addCase(searchDetailsAboutFilmByID.pending, progressIsPending)
-      .addCase(searchDetailsAboutFilmByID.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.isError = false;
-          state.filmDetails = payload;
-      })
-      .addCase(searchDetailsAboutFilmByID.rejected, resultIsRejected)
+
+
+
       //todo 2. PREMIERS FILMS/TOP------------------------------
       .addCase(searchPremiersFilms.pending, progressIsPending)
       .addCase(searchPremiersFilms.fulfilled, resultFulfilled)

@@ -3,11 +3,15 @@ import s from "./FilmDetailsPage.module.css";
 //hooks
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 
 //redux
-import { filmDetailsSelector } from "../../redux/selectors";
-import { searchDetailsAboutFilmByID } from "../../redux/thunks/thinkFilmDetails";
+import { showTitlesReducer } from "../../redux/filmDetails/filmDetailsReducers";
+import {
+  filmDetailsSelector,
+  moreTitlesSelector,
+} from "../../redux/filmDetails/filmDetailsSelectors";
+import { searchDetailsAboutFilmByID } from "../../redux/filmDetails/filmDetailsThunks";
 import {
   emptyCompany,
   emptyPoster,
@@ -17,31 +21,40 @@ import {
 
 //icons
 import { FcLike } from "react-icons/fc";
-import { TbArrowBigLeftLines } from "react-icons/tb";
 import { FaStar } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
-import AlternativeTitles from "../../components/FilmDetailsComponents/AlternativeTitle/AlternativeTitle";
-import { showTitlesReducer } from "../../redux/filmDetails/filmDetailsReducers";
-import { moreTitlesSelector } from "../../redux/filmDetails/filmDetailsSelectors";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+//components
+import AlternativeTitles from "../../components/FilmDetailsComponents/AlternativeTitle/AlternativeTitle";
 import FilmVideos from "../../components/FilmDetailsComponents/FilmVideos/FilmVideos";
+import Reviews from "../../components/FilmDetailsComponents/Reviews/Reviews";
+import BackLink from "../../components/BackLink/BackLink";
 
 const FilmDetails = () => {
+  //stars
   const [rating, setRating] = useState([]);
+  //empty stars
   const [emptyStars, setEmptyStars] = useState([]);
+
+  //*MAIN ID
   const { filmID } = useParams();
 
-  const filmData = useSelector(filmDetailsSelector);
+  //dispatch
   const dispatch = useDispatch();
-  const location = useLocation();
-  const backLink = useRef(location.state || "/");
 
+  //back link
+  const location = useLocation();
+  const backLink = useRef(location.state || location.pathname || "/");
+
+  console.log(backLink.current);
+  
+
+  //selectors
+  const filmData = useSelector(filmDetailsSelector);
   const showTitles = useSelector(moreTitlesSelector);
 
-  useEffect(() => {
-    dispatch(searchDetailsAboutFilmByID(filmID));
-  }, [dispatch, filmID]);
-
+  //* FILM DATA
   const {
     budget,
     genres,
@@ -61,6 +74,11 @@ const FilmDetails = () => {
     vote_average,
     adult,
   } = filmData;
+
+  //*EFFECTS
+  useEffect(() => {
+    dispatch(searchDetailsAboutFilmByID(filmID));
+  }, [dispatch, filmID]);
 
   useEffect(() => {
     if (vote_average) {
@@ -85,9 +103,7 @@ const FilmDetails = () => {
     <>
       <section className={s.page_film_info} id={id}>
         <div className={s.title_link_container}>
-          <Link to={backLink.current} className={s.back_link}>
-            <TbArrowBigLeftLines className={s.back_item} />{" "}
-          </Link>
+          <BackLink link={backLink.current}/>
           <div className={s.titles_container}>
             <h1 className={s.title}>{title ? title : original_title}</h1>
             {showTitles ? (
@@ -264,6 +280,7 @@ const FilmDetails = () => {
         </div>
       </section>
       <FilmVideos filmID={filmID} />
+      <Reviews filmID={filmID}/>
     </>
   );
 };
