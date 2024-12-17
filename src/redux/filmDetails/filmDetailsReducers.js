@@ -11,16 +11,19 @@ const initialState = {
   alternative_titles: [],
   showTitles: false,
   filmDetailsError: false,
+  isLoading: false,
   filmVideos: [],
   reviews: [],
 };
 
 const filmDetailsPending = (state) => {
   state.filmDetailsError = false;
+  state.isLoading = true;
 };
 
 const filmDetailsRejected = (state) => {
   state.filmDetailsError = true;
+  state.isLoading = false;
 };
 
 const filmDetailsSlice = createSlice({
@@ -38,26 +41,33 @@ const filmDetailsSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.filmDetails = payload;
+        state.isLoading = false;
       })
       .addCase(searchDetailsAboutFilmByID.rejected, filmDetailsRejected)
+
       .addCase(alternativeTitlesThunk.pending, filmDetailsPending)
       .addCase(alternativeTitlesThunk.fulfilled, (state, { payload }) => {
         state.filmDetailsError = false;
         state.alternative_titles = payload.titles;
+        state.isLoading = false;
       })
       .addCase(alternativeTitlesThunk.rejected, filmDetailsRejected)
+
       .addCase(filmVideosThunk.pending, filmDetailsPending)
       .addCase(filmVideosThunk.fulfilled, (state, { payload }) => {
         state.filmDetailsError = false;
         state.filmVideos = payload.results;
+        state.isLoading = false;
       })
       .addCase(filmVideosThunk.rejected, filmDetailsRejected)
+
       .addCase(reviewsThunk.pending, filmDetailsPending)
-      .addCase(reviewsThunk.fulfilled, (state, {payload}) => {
+      .addCase(reviewsThunk.fulfilled, (state, { payload }) => {
         state.reviews = payload.results;
         state.filmDetailsError = false;
+        state.isLoading = false;
       })
-      .addCase(reviewsThunk.rejected, filmDetailsRejected)
+      .addCase(reviewsThunk.rejected, filmDetailsRejected);
   },
 });
 

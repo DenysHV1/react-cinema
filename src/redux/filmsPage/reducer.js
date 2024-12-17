@@ -1,19 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initialState from "./initialState";
-import {
-  searchPremiersFilms,
-  searchPremiersFilmsByPage,
-} from "./thunkTrending";
-import {
-  searchNuwPlaying,
-  searchNuwPlayingByPage,
-  searchPopular,
-  searchPopularByPage,
-  searchTopRated,
-  searchTopRatedByPage,
-  searchUpcoming,
-  searchUpcomingByPage,
-} from "./thunkFilteredTopFilms";
+import { searchNuwPlaying, searchNuwPlayingByPage, searchPopular, searchPopularByPage, searchPremiersFilms, searchPremiersFilmsByPage, searchTopRated, searchTopRatedByPage, searchUpcoming, searchUpcomingByPage } from "./thunkFilteredTopFilms";
+
+
+
+const initialState = {
+  films: [],
+  page: 1,
+  total_pages: 0,
+  isLoading: false,
+  isError: false,
+  isOpen: false,
+  filterVariant: "PREMIERS",
+};
 
 const progressIsPending = (state) => {
   state.isLoading = true;
@@ -59,8 +57,6 @@ const filmsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
-
 
       //todo 2. PREMIERS FILMS/TOP------------------------------
       .addCase(searchPremiersFilms.pending, progressIsPending)

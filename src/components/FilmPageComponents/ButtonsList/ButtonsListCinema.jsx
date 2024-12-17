@@ -1,19 +1,21 @@
-import s from "./ButtonsList.module.css";
+import s from "./ButtonsListCinema.module.css";
+
 //redux
 import {
   filterVariantSelector,
   totalPagesSelector,
 } from "../../../redux/filmsPage/selectors";
-//hooks
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
   searchNuwPlayingByPage,
   searchPopularByPage,
   searchTopRatedByPage,
   searchUpcomingByPage,
+  searchPremiersFilmsByPage
 } from "../../../redux/filmsPage/thunkFilteredTopFilms";
-import { searchPremiersFilmsByPage } from "../../../redux/filmsPage/thunkTrending";
+
+//hooks
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const ButtonsList = () => {
   const totalPages = useSelector(totalPagesSelector);

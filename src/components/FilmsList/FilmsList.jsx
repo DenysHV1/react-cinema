@@ -5,18 +5,15 @@ import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router";
 
 //redux
-import { emptyPoster, imgLink } from "../../../redux/helpSettings";
-import { isErrorSelector } from "../../../redux/filmsPage/selectors";
+import { emptyPoster, imgLink } from "../../redux/helpSettings";
+import { isErrorSelector } from "../../redux/filmsPage/selectors";
 
 //components
-import Error from "../../Error/Error";
-
+import Error from "../Error/Error";
 
 const FilmsList = ({ films = [] }) => {
   const error = useSelector(isErrorSelector);
   const location = useLocation();
-
-
 
   return (
     <section>

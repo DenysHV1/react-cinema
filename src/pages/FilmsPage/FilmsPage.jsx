@@ -7,7 +7,7 @@ import {
 } from "../../redux/filmsPage/selectors";
 import PopularFilmsFilter from "../../components/FilmPageComponents/PopularFilmsFilter/PopularFilmsFilter";
 import Loader from "../../components/Loader/Loader";
-import FilmsList from "../../components/FilmPageComponents/FilmsList/FilmsList";
+import FilmsList from "../../components/FilmsList/FilmsList";
 import ButtonsList from "../../components/FilmPageComponents/ButtonsList/ButtonsListCinema";
 
 const FilmsPage = () => {

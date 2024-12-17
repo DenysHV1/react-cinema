@@ -1,15 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
 import s from "./Reviews.module.css";
-import { reviewsThunk } from "../../../redux/filmDetails/filmDetailsThunks";
+
+//hooks
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { Link, useLocation } from "react-router";
+
+//redux
+import { reviewsThunk } from "../../../redux/filmDetails/filmDetailsThunks";
 import { reviewsSelector } from "../../../redux/filmDetails/filmDetailsSelectors";
 import { emptyUserImg, imgLink } from "../../../redux/helpSettings";
-import { Link, useLocation } from "react-router";
 
 const Reviews = ({ filmID }) => {
   const dispatch = useDispatch();
   const reviews = useSelector(reviewsSelector);
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(reviewsThunk(filmID));
@@ -17,13 +21,17 @@ const Reviews = ({ filmID }) => {
 
   return (
     <section>
-		<h2 className={s.title}>Reviews</h2>
+      <h2 className={s.title}>Reviews</h2>
       <ul className={s.reviews_list}>
         {reviews?.length > 0 &&
           reviews.map(({ author, author_details, content, created_at, id }) => (
             <li key={id} className={s.reviews_item}>
               <div className={s.top_info_container}>
-                <Link to={`/reviews/${id}`} state={location} className={s.img_container}>
+                <Link
+                  to={`/reviews/${id}`}
+                  state={location}
+                  className={s.img_container}
+                >
                   <img
                     src={
                       author_details.avatar_path
