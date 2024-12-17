@@ -14,12 +14,7 @@ import {
   moreTitlesSelector,
 } from "../../redux/filmDetails/filmDetailsSelectors";
 import { searchDetailsAboutFilmByID } from "../../redux/filmDetails/filmDetailsThunks";
-import {
-  emptyCompany,
-  emptyPoster,
-  emptyTextInfo,
-  imgLink,
-} from "../../redux/helpSettings";
+import { emptyPoster, imgLink } from "../../redux/helpSettings";
 
 //icons
 import { FcLike } from "react-icons/fc";
@@ -32,6 +27,8 @@ import Reviews from "../../components/FilmDetailsComponents/Reviews/Reviews";
 import BackLink from "../../components/BackLink/BackLink";
 import StarsRating from "../../components/FilmDetailsComponents/StarsRating/StarsRating";
 import Loader from "../../components/Loader/Loader";
+import Companies from "../../components/FilmDetailsComponents/Companies/Companies";
+import Description from "../../components/FilmDetailsComponents/Description/Description";
 
 const FilmDetails = () => {
   //*MAIN ID
@@ -199,32 +196,8 @@ const FilmDetails = () => {
               )}
             </div>
           </div>
-          {production_companies?.length > 0 && production_companies && (
-            <div className={s.companies_container}>
-              <ul className={s.companies_list}>
-                {production_companies?.map(
-                  ({ id, logo_path, name, origin_country }) => (
-                    <li key={id} className={s.companies_item}>
-                      <div className={s.companies_img_container}>
-                        <img
-                          src={
-                            logo_path ? `${imgLink}${logo_path}` : emptyCompany
-                          }
-                          alt={name ? name : origin_country}
-                        />
-                      </div>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-          )}
-          <div className={s.overview_container}>
-            <h2 className={s.overview_title}>Description</h2>
-            <p className={s.overview_text}>
-              {overview ? overview : emptyTextInfo}
-            </p>
-          </div>
+          <Companies production_companies={production_companies} />
+          <Description overview={overview} />
         </section>
       )}
       <FilmVideos filmID={filmID} />

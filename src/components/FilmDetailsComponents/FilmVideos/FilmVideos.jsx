@@ -18,23 +18,25 @@ const FilmGallery = ({ filmID }) => {
 
   //redux
   const dispatch = useDispatch();
-  const films = useSelector(filmVideosSelector);
+  const videos = useSelector(filmVideosSelector);
 
   useEffect(() => {
     dispatch(filmVideosThunk(filmID));
   }, [dispatch, filmID]);
 
   useEffect(() => {
-    if (films.length > 0) {
-      const arr = Array.from({ length: films.length }, (_, i) => i + 1);
+    if (videos.length > 0) {
+      const arr = Array.from({ length: videos.length }, (_, i) => i + 1);
       setItemBTN(arr);
     }
-  }, [films]);
+  }, [videos]);
+
+  console.log(videos);
 
   return (
-    <section className={s.trailers_section}>
-      {films.length > 0 && (
-        <>
+    <>
+      {videos.length > 0 && (
+        <section className={s.trailers_section}>
           <h1 className={s.title}>Playlist</h1>
           <ul className={s.trailerBtn_list}>
             {itemsBtn?.map((item) => (
@@ -50,7 +52,7 @@ const FilmGallery = ({ filmID }) => {
             ))}
           </ul>
           <ul>
-            {films?.map(
+            {videos?.map(
               ({ id, key, name }, idx) =>
                 key &&
                 currentTrailer === idx + 1 && (
@@ -67,9 +69,9 @@ const FilmGallery = ({ filmID }) => {
                 )
             )}
           </ul>
-        </>
+        </section>
       )}
-    </section>
+    </>
   );
 };
 

@@ -41,6 +41,8 @@ const filmDetailsSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.filmDetails = payload;
+        console.log(payload);
+        
         state.isLoading = false;
       })
       .addCase(searchDetailsAboutFilmByID.rejected, filmDetailsRejected)

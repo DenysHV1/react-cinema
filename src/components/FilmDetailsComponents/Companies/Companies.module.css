@@ -1,0 +1,37 @@
+.companies_container {
+  width: 100%;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  margin: 40px 0;
+  background-color: rgba(240, 248, 255, 0.248);
+  min-height: 180px;
+}
+
+.companies_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.companies_item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.companies_img_container {
+  max-width: 130px;
+  height: auto;
+}
+
+.companies_img_container > img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.companies_name {
+  font-weight: 800;
+}

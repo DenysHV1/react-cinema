@@ -11,7 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import { filmsReducer } from "./filmsPage/reducer";
+import { filmsReducer } from "./filmsPage/reducers";
 import { filmDetailsReducer } from "./filmDetails/filmDetailsReducers";
 import { reviewsReducer } from "./reviewsPage/reducers";
 import { searchReducer } from "./searchPage/reducer";

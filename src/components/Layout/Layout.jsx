@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 //redux
 import { isOpenSelector } from "../../redux/filmsPage/selectors";
-import { closeMenu, toggleMenu } from "../../redux/filmsPage/reducer";
+import { closeMenu, toggleMenu } from "../../redux/filmsPage/reducers";
 
 //router
 import { Suspense } from "react";

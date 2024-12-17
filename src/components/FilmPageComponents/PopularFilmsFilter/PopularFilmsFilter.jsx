@@ -3,7 +3,7 @@ import s from "./PopularFilmsFilter.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { filterVariantSelector } from "../../../redux/filmsPage/selectors";
 import { searchNuwPlaying, searchPopular, searchPremiersFilms, searchTopRated, searchUpcoming } from "../../../redux/filmsPage/thunkFilteredTopFilms";
-import { setVariant } from "../../../redux/filmsPage/reducer";
+import { setVariant } from "../../../redux/filmsPage/reducers";
 
 
 const PopularFilmsFilter = () => {

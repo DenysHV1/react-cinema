@@ -1,5 +1,3 @@
-// import s from './FilmsPage.module.css'
-
 import { useSelector } from "react-redux";
 import {
   filmsSelector,
@@ -18,7 +16,6 @@ const FilmsPage = () => {
     <>
       <PopularFilmsFilter />
       {loading && <Loader />}
-
       <FilmsList films={films} />
       <ButtonsList />
     </>

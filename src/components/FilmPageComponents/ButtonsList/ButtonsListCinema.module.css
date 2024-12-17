@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: flex-start;
   max-width: 280px;
-  overflow-x: scroll;
+overflow-x: scroll;
   gap: 10px;
   padding: 5px 10px;
 }

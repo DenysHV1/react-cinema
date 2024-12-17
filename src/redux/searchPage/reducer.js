@@ -26,6 +26,7 @@ const searchSlice = createSlice({
       })
       .addCase(searchThunk.rejected, (state) => {
         state.error = true;
+        state.name = ''
       });
   },
 });
