@@ -3,43 +3,43 @@ import { imgLink } from "../../../redux/helpSettings";
 import s from "./Companies.module.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination } from "swiper";
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const Companies = ({ production_companies }) => {
   const location = useLocation();
-  SwiperCore.use([Navigation, Pagination]);
   return (
     <>
-    <h2 className={s.title}>Companies</h2>
+      <h2 className={s.title}>Companies</h2>
       {production_companies?.length > 0 && (
         <div className={s.companies_container}>
           <Swiper
-            spaceBetween={30}
-            slidesPerView={3}
-            navigation
-            pagination={{ clickable: true }}
+            cssMode={true}
+            navigation={true}
+            pagination={true}
+            mousewheel={true}
+            keyboard={true}
+            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
             breakpoints={{
               320: {
-                slidesPerView: 1,
+                slidesPerView: 2,
                 spaceBetween: 10,
               },
               768: {
-                slidesPerView: 2,
+                slidesPerView: 3,
                 spaceBetween: 15,
               },
               1024: {
                 slidesPerView: 3,
                 spaceBetween: 20,
-              }, 
+              },
               1440: {
                 slidesPerView: 3,
                 spaceBetween: 30,
               },
             }}
-            className={s.list}
           >
             {production_companies?.map(
               ({ id, logo_path, name, origin_country }) =>

@@ -3,7 +3,7 @@ import s from "./FilmSlider.module.css";
 //swiper
 //npm install swiper@latest
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination } from "swiper";
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -14,17 +14,17 @@ import { FcLike } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
 
 const FilmSlider = ({ list }) => {
-
   const location = useLocation();
-  SwiperCore.use([Navigation, Pagination]);
 
   return (
     <section className={s.FilmSlider_section}>
       <Swiper
-        spaceBetween={30}
-        slidesPerView={3}
-        navigation
-        pagination={{ clickable: true }}
+        cssMode={true}
+        navigation={true}
+        pagination={true}
+        mousewheel={true}
+        keyboard={true}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         breakpoints={{
           320: {
             slidesPerView: 2,
@@ -53,28 +53,29 @@ const FilmSlider = ({ list }) => {
               vote_average,
               title,
               original_title,
-            }) => (
-              <SwiperSlide key={id}>
-                <Link
-                  to={`/films/${id}`}
-                  state={location}
-                  className={s.FilmSlider_item}
-                >
-                  <img
-                    src={`${imgLink}${poster_path}`}
-                    alt={title ? title : original_title}
-                  />
-                  <div className={s.popularity_container}>
-                    <FcLike className={s.like} />
-                    <p>{Math.ceil(popularity)}</p>
-                  </div>
-                  <div className={s.vote_average_container}>
-                    <FaStar className={s.star} />
-                    <p>{Math.ceil(vote_average)}</p>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            )
+            }) =>
+              poster_path && (
+                <SwiperSlide key={id}>
+                  <Link
+                    to={`/films/${id}`}
+                    state={location}
+                    className={s.recommendations_item}
+                  >
+                    <img
+                      src={`${imgLink}${poster_path}`}
+                      alt={title ? title : original_title}
+                    />
+                    <div className={s.popularity_container}>
+                      <FcLike className={s.like} />
+                      <p>{Math.ceil(popularity)}</p>
+                    </div>
+                    <div className={s.vote_average_container}>
+                      <FaStar className={s.star} />
+                      <p>{Math.ceil(vote_average)}</p>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              )
           )}
       </Swiper>
     </section>
