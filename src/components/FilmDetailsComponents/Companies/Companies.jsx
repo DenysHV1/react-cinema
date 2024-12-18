@@ -33,7 +33,7 @@ const Companies = ({ production_companies }) => {
               1024: {
                 slidesPerView: 3,
                 spaceBetween: 20,
-              },
+              }, 
               1440: {
                 slidesPerView: 3,
                 spaceBetween: 30,
