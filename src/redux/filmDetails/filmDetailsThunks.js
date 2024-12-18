@@ -64,3 +64,92 @@ export const reviewsThunk = createAsyncThunk(
     }
   }
 );
+
+
+export const getKeywordsThunk = createAsyncThunk('keywords/getKeywords', async(id, thunkAPI) => {
+  const params = {
+    api_key: KEY,
+    language: "en-US",
+  };
+  try {
+    const response = await axios.get(`${BASE_URL}/3/movie/${id}/keywords`, {params});
+
+    return response.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+})
+
+
+export const getChangesThunk = createAsyncThunk('changes/getChanges', async(id, thunkAPI) => {
+  const params = {
+    api_key: KEY,
+    language: "en-US",
+  };
+  try {
+    const response = await axios.get(`${BASE_URL}/3/movie/${id}/changes`, {params});
+
+    return response.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+})
+
+
+export const getCastThunk = createAsyncThunk('cast/getCast', async(id, thunkAPI) => {
+  const params = {
+    api_key: KEY,
+    language: "en-US",
+  };
+  try {
+    const response = await axios.get(`${BASE_URL}/3/movie/${id}/credits`, {params});
+
+    return response.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+})
+
+export const getRecommendationsThunk = createAsyncThunk('recommendations/getRecommendations', async(id, thunkAPI) => {
+  const params = {
+    api_key: KEY,
+    language: "en-US",
+  };
+  try {
+    const response = await axios.get(`${BASE_URL}/3/movie/${id}/recommendations`, {params});
+
+    return response.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+})
+
+
+export const getSimilarThunk = createAsyncThunk('similar/getSimilar', async(id, thunkAPI) => {
+  const params = {
+    api_key: KEY,
+    language: "en-US",
+  };
+  try {
+    const response = await axios.get(`${BASE_URL}/3/movie/${id}/similar`, {params});
+
+    return response.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+})
+
+
+// export const getTestThunk = createAsyncThunk('test/getTest', async(id, thunkAPI) => {
+//   const params = {
+//     api_key: KEY,
+//     language: "en-US",
+//   };
+//   try {
+//     const response = await axios.get(`${BASE_URL}/3/movie/${id}/similar`, {params});
+
+//     return response.data
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue(error.message)
+//   }
+// })

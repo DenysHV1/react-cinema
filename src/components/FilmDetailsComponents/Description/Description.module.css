@@ -1,5 +1,8 @@
 .overview_container {
 	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
   }
   
   .overview_title {

@@ -1,0 +1,27 @@
+.keywords_list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.keywords_item {
+  background-color: black;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  padding: 3px;
+  border-radius: 3px;
+  border: 2px solid red;
+  display: flex;
+  gap: 5px;
+  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
+    0 0 3px #ff9900, 0 0 3px #ff6600;
+  cursor: pointer;
+  transition: transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.keywords_item:hover {
+  transform: scale(1.1);
+}

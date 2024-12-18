@@ -221,6 +221,31 @@
   transform: scale(1.1);
 }
 
+.moreInfo{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #ff9900;
+  margin: 10px 0;
+}
+
+.activeLink{
+  color: red;
+  font-size: 23px;
+  font-weight: 600;
+  border-bottom: 1px solid white;
+}
+
+.noActiveLink{
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+
+
 @media screen and (min-width: 768px) {
   .top_info {
     flex-direction: row;

@@ -8,7 +8,6 @@ import { isOpenSelector } from "../../redux/filmsPage/selectors";
 import { closeMenu, toggleMenu } from "../../redux/filmsPage/reducers";
 
 //router
-import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router";
 
 //icons
@@ -19,7 +18,6 @@ import { MdOutlineDoubleArrow } from "react-icons/md";
 import { SiReactos } from "react-icons/si";
 
 //components
-import Loader from "../Loader/Loader";
 import SearcherFilms from "../SearcherFilms/SearcherFilms";
 
 const Layout = () => {
@@ -105,9 +103,7 @@ const Layout = () => {
         </div>
       </header>
       <main>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
+        <Outlet />
       </main>
     </div>
   );

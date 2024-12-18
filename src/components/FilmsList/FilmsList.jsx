@@ -10,12 +10,12 @@ import { isErrorSelector } from "../../redux/filmsPage/selectors";
 
 //components
 import Error from "../Error/Error";
+import { FcLike } from "react-icons/fc";
+import { FaStar } from "react-icons/fa";
 
 const FilmsList = ({ films = [] }) => {
   const error = useSelector(isErrorSelector);
   const location = useLocation();
-
-  console.log(films);
 
   return (
     <section>
@@ -31,6 +31,14 @@ const FilmsList = ({ films = [] }) => {
                 <li key={id} className={s.list_element}>
                   <Link to={`/films/${id}`} state={location}>
                     <img src={`${imgLink}${poster_path}`} alt={title} />
+                    <div className={s.popularity_container}>
+                      <FcLike className={s.like} />
+                      <p>{Math.ceil(popularity)}</p>
+                    </div>
+                    <div className={s.vote_average_container}>
+                      <FaStar className={s.star} />
+                      <p>{Math.ceil(vote_average)}</p>
+                    </div>
                   </Link>
                 </li>
               )

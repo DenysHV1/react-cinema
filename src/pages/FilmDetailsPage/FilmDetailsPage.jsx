@@ -1,9 +1,9 @@
 import s from "./FilmDetailsPage.module.css";
 
 //hooks
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router";
+import { NavLink, Outlet, useLocation, useParams } from "react-router";
 
 //redux
 import { showTitlesReducer } from "../../redux/filmDetails/filmDetailsReducers";
@@ -12,8 +12,16 @@ import {
   filmDetailsSelector,
   filmIsLoadingSelector,
   moreTitlesSelector,
+  recommendationsSelector,
+  similarSelector,
 } from "../../redux/filmDetails/filmDetailsSelectors";
-import { searchDetailsAboutFilmByID } from "../../redux/filmDetails/filmDetailsThunks";
+import {
+  getRecommendationsThunk,
+  getSimilarThunk,
+  // getTestThunk,
+  // getTestThunk,
+  searchDetailsAboutFilmByID,
+} from "../../redux/filmDetails/filmDetailsThunks";
 import { emptyPoster, imgLink } from "../../redux/helpSettings";
 
 //icons
@@ -29,6 +37,8 @@ import StarsRating from "../../components/FilmDetailsComponents/StarsRating/Star
 import Loader from "../../components/Loader/Loader";
 import Companies from "../../components/FilmDetailsComponents/Companies/Companies";
 import Description from "../../components/FilmDetailsComponents/Description/Description";
+import FilmSlider from "../../components/FilmSlider/FilmSlider";
+// import Gallery from "../../components/FilmDetailsComponents/Gallery/Gallery";
 
 const FilmDetails = () => {
   //*MAIN ID
@@ -39,18 +49,22 @@ const FilmDetails = () => {
 
   //back link
   const location = useLocation();
-  const backLink = useRef(location.state || location.pathname || "/");
+  const backLink = useRef(location.state || "/");
 
   //selectors
   const film = useSelector(filmDetailsSelector);
   const showTitles = useSelector(moreTitlesSelector);
   const isLoading = useSelector(filmIsLoadingSelector);
   const isError = useSelector(filmDetailsErrorSelector);
+  const recommendations = useSelector(recommendationsSelector);
+  const similar = useSelector(similarSelector);
   //* FILM DATA
 
   //*EFFECTS
   useEffect(() => {
     dispatch(searchDetailsAboutFilmByID(filmID));
+    dispatch(getRecommendationsThunk(filmID));
+    dispatch(getSimilarThunk(filmID));
   }, [dispatch, filmID]);
 
   const {
@@ -76,6 +90,10 @@ const FilmDetails = () => {
   const countries = production_countries?.length
     ? production_countries
     : origin_country;
+
+  const setActive = ({ isActive }) =>
+    isActive ? s.activeLink : s.noActiveLink;
+  console.log(backLink.current);
 
   return (
     <>
@@ -197,10 +215,42 @@ const FilmDetails = () => {
             </div>
           </div>
           <Companies production_companies={production_companies} />
+          {/* <Gallery/> */}
           <Description overview={overview} />
         </section>
       )}
       <FilmVideos filmID={filmID} />
+      <section>
+        <ul className={s.moreInfo}>
+          <li className={s.moreInfo_item}>
+            <NavLink to={"keywords"} className={setActive}>
+              Keywords
+            </NavLink>
+          </li>
+          <li className={s.moreInfo_item}>
+            <NavLink to={"changes"} className={setActive}>
+              Last Changes
+            </NavLink>
+          </li>
+          <li className={s.moreInfo_item}>
+            <NavLink to={"cast"} className={setActive}>
+              Cast
+            </NavLink>
+          </li>
+        </ul>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </section>
+      <section>
+        <h2 className={s.title}>Recommendations</h2>
+        <FilmSlider list={recommendations} />
+      </section>
+      <section>
+        <h2 className={s.title}>Similar</h2>
+        <FilmSlider list={similar} />
+      </section>
+
       <Reviews filmID={filmID} />
     </>
   );

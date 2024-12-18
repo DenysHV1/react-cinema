@@ -31,8 +31,6 @@ const FilmGallery = ({ filmID }) => {
     }
   }, [videos]);
 
-  console.log(videos);
-
   return (
     <>
       {videos.length > 0 && (
