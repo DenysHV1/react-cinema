@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 //redux
-import { filmIsLoadingSelector, filmVideosSelector } from "../../../redux/filmDetails/filmDetailsSelectors";
+import {
+  filmIsLoadingSelector,
+  filmVideosSelector,
+} from "../../../redux/filmDetails/filmDetailsSelectors";
 import { filmVideosThunk } from "../../../redux/filmDetails/filmDetailsThunks";
 
 //icons
@@ -20,7 +23,7 @@ const FilmGallery = ({ filmID }) => {
   //redux
   const dispatch = useDispatch();
   const videos = useSelector(filmVideosSelector);
-  const isLoading = useSelector(filmIsLoadingSelector)
+  const isLoading = useSelector(filmIsLoadingSelector);
 
   useEffect(() => {
     dispatch(filmVideosThunk(filmID));
@@ -45,13 +48,13 @@ const FilmGallery = ({ filmID }) => {
                   type="button"
                   className={s.trailer_btn}
                   onClick={() => setCurrentTrailer(item)}
-                  >
+                >
                   <RiMovieFill className={s.btn_svg} /> <span>{item}</span>
                 </button>
               </li>
             ))}
           </ul>
-          {isLoading && <Loader/>}
+          {isLoading && <Loader />}
           <ul>
             {videos.map(
               ({ id, key, name }, idx) =>

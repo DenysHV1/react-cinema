@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { searchNuwPlaying, searchNuwPlayingByPage, searchPopular, searchPopularByPage, searchPremiersFilms, searchPremiersFilmsByPage, searchTopRated, searchTopRatedByPage, searchUpcoming, searchUpcomingByPage } from "./thunkFilteredTopFilms";
-
-
+import {
+  searchPopular,
+  searchPopularByPage,
+  searchPremiersFilms,
+  searchPremiersFilmsByPage,
+  searchTopRated,
+  searchTopRatedByPage,
+  searchUpcoming,
+  searchUpcomingByPage,
+} from "./thunkFilteredTopFilms";
 
 const initialState = {
   films: [],
@@ -66,15 +73,6 @@ const filmsSlice = createSlice({
       .addCase(searchPremiersFilmsByPage.pending, progressIsPending)
       .addCase(searchPremiersFilmsByPage.fulfilled, resultFulfilledByPage)
       .addCase(searchPremiersFilmsByPage.rejected, resultIsRejected)
-
-      //todo 3. NUW PLAYING/TOP---------------------------------
-      .addCase(searchNuwPlaying.pending, progressIsPending)
-      .addCase(searchNuwPlaying.fulfilled, resultFulfilled)
-      .addCase(searchNuwPlaying.rejected, resultIsRejected)
-      //*3. NUW PLAYING BY PAGE/TOP
-      .addCase(searchNuwPlayingByPage.pending, progressIsPending)
-      .addCase(searchNuwPlayingByPage.fulfilled, resultFulfilledByPage)
-      .addCase(searchNuwPlayingByPage.rejected, resultIsRejected)
 
       //todo 4. POPULAR/TOP---------------------------------
       .addCase(searchPopular.pending, progressIsPending)

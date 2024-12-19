@@ -22,11 +22,11 @@ const FilmsList = ({ films = [] }) => {
   const error = useSelector(isErrorSelector);
   const isLoading = useSelector(isLoadingSelector);
   const location = useLocation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <section onClick={() => dispatch(closeMenu())}>
-      <ul className={s.list} >
+      <ul className={s.list}>
         {isLoading && <Loader />}
         {!error && films?.length > 0 ? (
           films.map(
@@ -36,8 +36,8 @@ const FilmsList = ({ films = [] }) => {
               id &&
               vote_average > 3 &&
               popularity > 1 && (
-                <li key={id} className={s.list_element} >
-                  <Link to={`/films/${id}`} state={location} >
+                <li key={id} className={s.list_element}>
+                  <Link to={`/films/${id}`} state={location}>
                     <img src={`${imgLink}${poster_path}`} alt={title} />
                     <div className={s.popularity_container}>
                       <FcLike className={s.like} />

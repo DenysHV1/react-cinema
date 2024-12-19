@@ -5,7 +5,7 @@ const Loader = () => {
     margin: "0 auto",
     display: "flex",
     alineSelf: "center",
-    justifyContent:'center'
+    justifyContent: "center",
   };
   return (
     <Vortex

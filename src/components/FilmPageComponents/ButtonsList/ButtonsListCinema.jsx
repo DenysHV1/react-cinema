@@ -6,17 +6,15 @@ import {
   totalPagesSelector,
 } from "../../../redux/filmsPage/selectors";
 import {
-  searchNuwPlayingByPage,
   searchPopularByPage,
   searchTopRatedByPage,
   searchUpcomingByPage,
-  searchPremiersFilmsByPage
+  searchPremiersFilmsByPage,
 } from "../../../redux/filmsPage/thunkFilteredTopFilms";
 
 //hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeMenu } from "../../../redux/filmsPage/reducers";
 
 const ButtonsList = () => {
   const totalPages = useSelector(totalPagesSelector);
@@ -36,9 +34,6 @@ const ButtonsList = () => {
 
   const handleChangePage = (item) => {
     switch (variant) {
-      case "NOW_PLAYING":
-        dispatch(searchNuwPlayingByPage(item));
-        break;
       case "POPULAR":
         dispatch(searchPopularByPage(item));
         break;
@@ -58,7 +53,7 @@ const ButtonsList = () => {
   };
 
   return (
-    <div className={s.buttons_container} onClick={() => dispatch(closeMenu())}>
+    <div className={s.buttons_container}>
       <ul className={s.buttonsList}>
         {pages?.length > 0 &&
           pages.map((item) => (

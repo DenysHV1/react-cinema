@@ -86,7 +86,7 @@
   border: 2px solid var(--color-accent);
   gap: 5px;
   text-shadow: var(--special-text-shadow);
-  transition: transform  var(--transition-effect),
+  transition: transform var(--transition-effect),
     background-color var(--transition-effect);
 }
 

@@ -1,108 +1,108 @@
 .headerBanner {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  align-items: center;
+  margin-bottom: 20px;
 }
 .headerBanner > video {
-    display: block;
-    position: absolute;
-    width: 100%;
-    object-fit: cover;
-    height: 100%;
-    opacity: 1;
+  display: block;
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  opacity: 1;
 }
 .headerBanner > img {
-    display: block;
-    position: absolute;
-    width: 100%;
-    object-fit: cover;
-    height: 100%;
-    opacity: 0.72;
+  display: block;
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  opacity: 0.72;
 }
 .headerBanner > img:last-child {
-    opacity: 0.52;
+  opacity: 0.52;
 }
 .headerBanner > div {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    z-index: 1;
-    max-width: 844px;
-    margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  max-width: 844px;
+  margin-left: 20px;
 }
 
 .headerBanner > div > p:first-child {
-    font-size: 46px;
-    font-weight: bold;
-    color: #fff;
-    font-family: "Inter", sans-serif;
+  font-size: 46px;
+  font-weight: bold;
+  color: #fff;
+  font-family: "Inter", sans-serif;
 }
 .headerBanner > div > p:last-of-type {
-    font-size: 24px;
-    font-weight: medium;
-    color: #fff;
-    font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: medium;
+  color: #fff;
+  font-family: "Inter", sans-serif;
 }
 .headerBanner > div > div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 27px;
-    margin-top: 26px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 27px;
+  margin-top: 26px;
 }
 .headerBanner > div > div > button {
-    display: block;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    background-color: #000000;
-    border-radius: 49px;
-    border: 0px;
-    cursor: pointer;
-    color: #fff;
-    font-size: 19px;
+  display: block;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  background-color: #000000;
+  border-radius: 49px;
+  border: 0px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 19px;
 }
 .headerBanner > div > div > a {
-    display: block;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    background-color: #000000;
-    border-radius: 49px;
-    border: 0px;
-    cursor: pointer;
-    color: #fff;
-    font-size: 19px;
-    font-family: "Inter", sans-serif;
-    text-decoration: none;
+  display: block;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  background-color: #000000;
+  border-radius: 49px;
+  border: 0px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 19px;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
 }
 .headerBanner > div > div > a:hover {
-    transition: 0.2s ease;
-    background-color: #141414;
+  transition: 0.2s ease;
+  background-color: #141414;
 }
 .headerBanner > div > div > button:hover {
-    transition: 0.2s ease;
-    background-color: #141414;
+  transition: 0.2s ease;
+  background-color: #141414;
 }
 .headerBanner > div > div > button:last-of-type {
-    background-color: #C01616;
+  background-color: #c01616;
 }
 .headerBanner > div > div > button:last-of-type:hover {
-    transition: 0.2s ease;
-    box-shadow: 0 0 15px #C01616;
+  transition: 0.2s ease;
+  box-shadow: 0 0 15px #c01616;
 }
 
-@media screen and (min-width: 768px){
-    .headerBanner > div > p:first-child {
-        font-size: 96px;
-    }
+@media screen and (min-width: 768px) {
+  .headerBanner > div > p:first-child {
+    font-size: 96px;
+  }
 
-    .headerBanner > div {
-        margin-left: 20px;
-    }
+  .headerBanner > div {
+    margin-left: 20px;
+  }
 }

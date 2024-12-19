@@ -64,13 +64,7 @@ const FilmDetails = () => {
     dispatch(getSimilarThunk(filmID));
   }, [dispatch, filmID]);
 
-  const {
-    id,
-    original_title,
-    overview,
-    production_companies,
-    title,
-  } = film;
+  const { id, original_title, overview, production_companies, title } = film;
 
   return (
     <div onClick={() => dispatch(closeMenu())}>

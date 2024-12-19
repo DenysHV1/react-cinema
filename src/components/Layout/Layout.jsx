@@ -68,22 +68,31 @@ const Layout = () => {
         </nav>
         <SearcherFilms />
       </header>
-       <div className={isOpenModal ? [s.mobileMenu, s.isOpen].join(" ") : s.mobileMenu}>
-          <nav className={s.mobileInner}>
-            <button
-              className={s.closeMenu}
-              onClick={() => dispatch(closeMenu())}
-            >
-              <IoCloseSharp />
-            </button>
+      <div
+        className={
+          isOpenModal ? [s.mobileMenu, s.isOpen].join(" ") : s.mobileMenu
+        }
+      >
+        <nav className={s.mobileInner}>
+          <button className={s.closeMenu} onClick={() => dispatch(closeMenu())}>
+            <IoCloseSharp />
+          </button>
 
-            <NavLink to={"/"} className={activeLink} onClick={() => dispatch(closeMenu())}>
-              <SiReactos className={s.logo} /> Cinema
-            </NavLink>
-            <NavLink to={"/films"} className={activeLink} onClick={() => dispatch(closeMenu())}>
-              Films
-            </NavLink>
-            {/* <ul className={s.authPagesMobile}>
+          <NavLink
+            to={"/"}
+            className={activeLink}
+            onClick={() => dispatch(closeMenu())}
+          >
+            <SiReactos className={s.logo} /> Cinema
+          </NavLink>
+          <NavLink
+            to={"/films"}
+            className={activeLink}
+            onClick={() => dispatch(closeMenu())}
+          >
+            Films
+          </NavLink>
+          {/* <ul className={s.authPagesMobile}>
               <li>
                 <NavLink to={"/login"} className={activeLink}>
                   <BiLogIn /> Login
@@ -96,8 +105,8 @@ const Layout = () => {
                 </NavLink>
               </li>
             </ul> */}
-          </nav>
-       </div>
+        </nav>
+      </div>
       <main>
         <Outlet />
       </main>

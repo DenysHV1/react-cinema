@@ -1,21 +1,21 @@
-.moreInfo{
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	padding: 10px 0;
-	background-color: #ff9900;
-	margin: 10px 0;
-  }
-  
-  .activeLink{
-	color: var(--color-accent);
-	font-size: 23px;
-	font-weight: 600;
-	border-bottom: 1px solid white;
-  }
-  
-  .noActiveLink{
-	color: white;
-	font-size: 20px;
-	font-weight: 600;
-  }
+.moreInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #ff9900;
+  margin: 10px 0;
+}
+
+.activeLink {
+  color: var(--color-accent);
+  font-size: 23px;
+  font-weight: 600;
+  border-bottom: 1px solid white;
+}
+
+.noActiveLink {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}

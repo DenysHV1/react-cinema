@@ -58,9 +58,7 @@ const Reviews = ({ filmID }) => {
                       </Link>
                     </div>
                     <div className={s.name_data}>
-                      <p className={s.name}>
-                        {author_details.name || author}
-                      </p>
+                      <p className={s.name}>{author_details.name || author}</p>
                       <p className={s.data}>
                         {created_at ? created_at.slice(0, 10) : "2024.12.17"}
                       </p>

@@ -17,7 +17,7 @@ const FilmSlider = ({ list }) => {
   const location = useLocation();
 
   return (
-    <section className={s.FilmSlider_section}>
+    <div className={s.FilmSlider_section}>
       <Swiper
         cssMode={true}
         navigation={true}
@@ -78,9 +78,8 @@ const FilmSlider = ({ list }) => {
               )
           )}
       </Swiper>
-    </section>
+    </div>
   );
 };
 
 export default FilmSlider;
-

@@ -1,11 +1,10 @@
 import { Link } from "react-router";
 import css from "./HeaderBanner.module.css";
 
-import bannerVideo from './Titanic.mp4'
-import bannerBg from './background.jpg'
+import bannerVideo from "./Titanic.mp4";
+import bannerBg from "./background.jpg";
 
 const HeaderBanner = () => {
-
   return (
     <section className={css.headerBanner}>
       <div>

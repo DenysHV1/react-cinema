@@ -16,6 +16,7 @@ import { filmDetailsReducer } from "./filmDetails/filmDetailsReducers";
 import { reviewsReducer } from "./reviewsPage/reducers";
 import { searchReducer } from "./searchPage/reducer";
 import { companyReducer } from "./companyPage/reducers";
+import { homePageReducer } from "./homePage/homeReducer";
 
 const rootPersistConfig = {
   key: "root",
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   reviews: reviewsReducer,
   search: searchReducer,
   company: companyReducer,
+  home: homePageReducer,
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);

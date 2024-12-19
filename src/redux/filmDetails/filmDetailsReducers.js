@@ -7,7 +7,6 @@ import {
   getKeywordsThunk,
   getRecommendationsThunk,
   getSimilarThunk,
-  // getTestThunk,
   reviewsThunk,
   searchDetailsAboutFilmByID,
 } from "./filmDetailsThunks";
@@ -20,12 +19,12 @@ const initialState = {
   isLoading: false,
   filmVideos: [],
   reviews: [],
-  test: '',
+  test: "",
   keywords: [],
   changes: {},
   cast: [],
   recommendations: [],
-  similar:[],
+  similar: [],
 };
 
 const filmDetailsPending = (state) => {
@@ -127,7 +126,7 @@ const filmDetailsSlice = createSlice({
         state.similar = payload.results;
         state.isLoading = false;
       })
-      .addCase(getSimilarThunk.rejected, filmDetailsRejected)
+      .addCase(getSimilarThunk.rejected, filmDetailsRejected);
   },
 });
 

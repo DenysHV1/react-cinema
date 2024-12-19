@@ -2,9 +2,13 @@ import { useEffect } from "react";
 import s from "./PopularFilmsFilter.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { filterVariantSelector } from "../../../redux/filmsPage/selectors";
-import { searchNuwPlaying, searchPopular, searchPremiersFilms, searchTopRated, searchUpcoming } from "../../../redux/filmsPage/thunkFilteredTopFilms";
+import {
+  searchPopular,
+  searchPremiersFilms,
+  searchTopRated,
+  searchUpcoming,
+} from "../../../redux/filmsPage/thunkFilteredTopFilms";
 import { closeMenu, setVariant } from "../../../redux/filmsPage/reducers";
-
 
 const PopularFilmsFilter = () => {
   const dispatch = useDispatch();
@@ -13,9 +17,6 @@ const PopularFilmsFilter = () => {
   useEffect(() => {
     if (variant) {
       switch (variant) {
-        case "NOW_PLAYING":
-          dispatch(searchNuwPlaying());
-          break;
         case "POPULAR":
           dispatch(searchPopular());
           break;
@@ -42,12 +43,6 @@ const PopularFilmsFilter = () => {
         className={s.btn}
       >
         Premiers
-      </button>
-      <button
-        onClick={() => dispatch(setVariant("NOW_PLAYING"))}
-        className={s.btn}
-      >
-        Now Playing
       </button>
       <button onClick={() => dispatch(setVariant("POPULAR"))} className={s.btn}>
         Popular

@@ -2,46 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL, KEY } from "../helpSettings";
 
-//1. NuwPlaying
-export const searchNuwPlaying = createAsyncThunk(
-  "nuw_paying/searchNuwPlaying",
-  async (__, thunkAPI) => {
-    try {
-      const params = {
-        api_key: KEY,
-        language: "en-US",
-        page: 1,
-      };
-      const response = await axios.get(`${BASE_URL}/3/movie/now_playing`, {
-        params,
-      });
-
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const searchNuwPlayingByPage = createAsyncThunk(
-  "nuw_paying/searchNuwPlayingByPage",
-  async (page, thunkAPI) => {
-    try {
-      const params = {
-        api_key: KEY,
-        language: "en-US",
-        page: page,
-      };
-      const response = await axios.get(`${BASE_URL}/3/movie/now_playing`, {
-        params,
-      });
-
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
 
 //2. Popular
 export const searchPopular = createAsyncThunk(

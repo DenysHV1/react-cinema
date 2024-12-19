@@ -1,11 +1,11 @@
 .overview_container {
-	margin-bottom: 20px;
-	display: flex;
-	flex-direction: column;
-	align-self: flex-start;
-  }
-  
-  .overview_title {
-	font-size: var(--h2-title-size);
-	margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.overview_title {
+  font-size: var(--h2-title-size);
+  margin-bottom: 20px;
+}

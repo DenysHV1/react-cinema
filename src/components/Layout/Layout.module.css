@@ -113,7 +113,7 @@
   background: #535353;
   padding: 72px 24px 24px 24px;
   transition: transform var(--transition-effect);
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
 }

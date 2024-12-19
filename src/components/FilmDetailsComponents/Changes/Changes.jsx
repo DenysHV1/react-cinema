@@ -39,38 +39,39 @@ const Changes = () => {
     <>
       {changes?.length > 0 && !isError ? (
         <Swiper
-        cssMode={true}
-        navigation={true}
-        pagination={true}
-        mousewheel={true}
-        keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 15,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          1440: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-        }}
-      >
+          cssMode={true}
+          navigation={true}
+          pagination={true}
+          mousewheel={true}
+          keyboard={true}
+          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            1440: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+          }}
+        >
           {changes.map(
             ({ key, items }) =>
               key === "videos" &&
               items.map(({ id, value, original_value }) => {
                 const videoKey = value?.key || original_value?.key;
-                const videoName = value?.name || original_value?.name || "Unknown video name";
-  
+                const videoName =
+                  value?.name || original_value?.name || "Unknown video name";
+
                 return (
                   videoKey && (
                     <SwiperSlide key={id} className={s.videoContainer}>

@@ -23,6 +23,6 @@
 
 .keywords_item:hover,
 .keywords_item:focus,
-.keywords_item:active{
+.keywords_item:active {
   transform: scale(1.1);
 }

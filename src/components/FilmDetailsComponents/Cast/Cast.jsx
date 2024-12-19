@@ -50,9 +50,15 @@ const Cast = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {cast?.length > 0 && !isError ? (<ul className={s.cast_list}>
-          {cast.map(({ character, name, id, popularity, profile_path, original_name },idx) =>
-              profile_path && idx <= elements && (
+      {cast?.length > 0 && !isError ? (
+        <ul className={s.cast_list}>
+          {cast.map(
+            (
+              { character, name, id, popularity, profile_path, original_name },
+              idx
+            ) =>
+              profile_path &&
+              idx <= elements && (
                 <li key={id}>
                   <div className={s.cast_item}>
                     <div className={s.img_container}>
@@ -77,8 +83,12 @@ const Cast = () => {
                     </div>
                   </div>
                 </li>
-              ))}
-        </ul>) : (<NoInfo info="actors" />)}
+              )
+          )}
+        </ul>
+      ) : (
+        <NoInfo info="actors" />
+      )}
       {showMoreBtn && (
         <button className={s.showMore} onClick={handlerShowMore}>
           {btnText}
