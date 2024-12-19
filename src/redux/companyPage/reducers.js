@@ -4,6 +4,7 @@ import { companyPageThunk } from "./thunk";
 const initialState = {
   company: [],
   error: false,
+  loader: false,
 };
 
 const companySlice = createSlice({
@@ -13,14 +14,15 @@ const companySlice = createSlice({
     builder
       .addCase(companyPageThunk.pending, (state) => {
         state.error = false;
+        state.loader = true;
       })
       .addCase(companyPageThunk.rejected, (state) => {
         state.error = true;
+        state.loader = false;
       })
       .addCase(companyPageThunk.fulfilled, (state, { payload }) => {
         state.company = payload;
-        console.log(payload);
-        
+        state.loader = false;
         state.error = false;
       });
   },

@@ -7,13 +7,19 @@ import { Link, useLocation } from "react-router";
 
 //redux
 import { reviewsThunk } from "../../../redux/filmDetails/filmDetailsThunks";
-import { reviewsSelector } from "../../../redux/filmDetails/filmDetailsSelectors";
+import {
+  filmIsLoadingSelector,
+  reviewsSelector,
+} from "../../../redux/filmDetails/filmDetailsSelectors";
 import { emptyUserImg, imgLink } from "../../../redux/helpSettings";
+
+import Loader from "../../Loader/Loader";
 
 const Reviews = ({ filmID }) => {
   const dispatch = useDispatch();
-  const reviews = useSelector(reviewsSelector);
   const location = useLocation();
+  const reviews = useSelector(reviewsSelector);
+  const isLoading = useSelector(filmIsLoadingSelector);
 
   useEffect(() => {
     dispatch(reviewsThunk(filmID));
@@ -21,6 +27,7 @@ const Reviews = ({ filmID }) => {
 
   return (
     <>
+      {isLoading && <Loader />}
       {reviews?.length > 0 && (
         <section>
           <h2 className={s.title}>Reviews</h2>
@@ -41,24 +48,18 @@ const Reviews = ({ filmID }) => {
                               ? `${imgLink}${author_details.avatar_path}`
                               : emptyUserImg
                           }
-                          alt={
-                            author_details.name ? author_details.name : author
-                          }
+                          alt={author_details.name || author}
                           className={s.img}
                         />
                         <p className={s.rating}>
                           Rating:
-                          <span>
-                            {author_details.rating
-                              ? author_details.rating
-                              : "0"}
-                          </span>
+                          <span>{author_details.rating || "0"}</span>
                         </p>
                       </Link>
                     </div>
                     <div className={s.name_data}>
                       <p className={s.name}>
-                        {author_details.name ? author_details.name : author}
+                        {author_details.name || author}
                       </p>
                       <p className={s.data}>
                         {created_at ? created_at.slice(0, 10) : "2024.12.17"}

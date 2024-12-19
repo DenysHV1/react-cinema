@@ -48,7 +48,7 @@
 }
 
 .activeLink {
-  color: rgb(237, 0, 0);
+  color: var(--color-accent);
 }
 
 .unActiveLink {
@@ -106,7 +106,7 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity var(--transition-effect);
 }
 
 .mobileMenu.isOpen {
@@ -137,7 +137,8 @@
   min-width: 320px;
   padding: 0 10px;
   margin: 0 auto;
-  border: 2px solid white;
+  /* border: 2px solid white; */
+  background-color: rgb(0, 0, 0);
 }
 
 @media screen and (min-width: 480px) {
@@ -149,7 +150,6 @@
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
-    padding: 20px;
   }
 
   .mobileMenu {
@@ -171,9 +171,9 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1180px) {
   .container {
-    max-width: 1280px;
+    max-width: 1180px;
     padding: 30px;
   }
 }

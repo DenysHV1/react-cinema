@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 //redux
-import { filmVideosSelector } from "../../../redux/filmDetails/filmDetailsSelectors";
+import { filmIsLoadingSelector, filmVideosSelector } from "../../../redux/filmDetails/filmDetailsSelectors";
 import { filmVideosThunk } from "../../../redux/filmDetails/filmDetailsThunks";
 
 //icons
 import { RiMovieFill } from "react-icons/ri";
+import Loader from "../../Loader/Loader";
 
 const FilmGallery = ({ filmID }) => {
   //item buttons and navigate
@@ -19,6 +20,7 @@ const FilmGallery = ({ filmID }) => {
   //redux
   const dispatch = useDispatch();
   const videos = useSelector(filmVideosSelector);
+  const isLoading = useSelector(filmIsLoadingSelector)
 
   useEffect(() => {
     dispatch(filmVideosThunk(filmID));
@@ -33,24 +35,25 @@ const FilmGallery = ({ filmID }) => {
 
   return (
     <>
-      {videos.length > 0 && (
+      {videos?.length > 0 && (
         <section className={s.trailers_section}>
           <h1 className={s.title}>Playlist</h1>
           <ul className={s.trailerBtn_list}>
-            {itemsBtn?.map((item) => (
+            {itemsBtn.map((item) => (
               <li className={s.trailer_item} key={`${item}btn`}>
                 <button
                   type="button"
                   className={s.trailer_btn}
                   onClick={() => setCurrentTrailer(item)}
-                >
+                  >
                   <RiMovieFill className={s.btn_svg} /> <span>{item}</span>
                 </button>
               </li>
             ))}
           </ul>
+          {isLoading && <Loader/>}
           <ul>
-            {videos?.map(
+            {videos.map(
               ({ id, key, name }, idx) =>
                 key &&
                 currentTrailer === idx + 1 && (
@@ -58,7 +61,7 @@ const FilmGallery = ({ filmID }) => {
                     <iframe
                       className={s.iframeVideo}
                       src={`https://www.youtube.com/embed/${key}`}
-                      title={name ? name : "alternative name"}
+                      title={name || "alternative name"}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen

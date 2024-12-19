@@ -25,13 +25,14 @@ const StarsRating = ({ vote_average }) => {
       setEmptyStars(emptyStarsInner);
     }
   }, [vote_average]);
+
   return (
     <>
       {vote_average && (
         <div className={s.details_item_container}>
           <h3 className={s.title_h3}>Rating: </h3>
           <ul className={s.rating_list}>
-            {rating.length > 0 &&
+            {rating?.length > 0 &&
               rating.map((item) => (
                 <li key={`${item}full`} className={s.rating_item}>
                   <button type="button" className={s.button_star}>
@@ -39,7 +40,7 @@ const StarsRating = ({ vote_average }) => {
                   </button>
                 </li>
               ))}
-            {emptyStars.length > 0 &&
+            {emptyStars?.length > 0 &&
               emptyStars.map((item) => (
                 <li key={`${item}empty`} className={s.rating_item}>
                   <button type="button" className={s.button_star}>

@@ -6,6 +6,6 @@
   }
   
   .overview_title {
-	font-size: 30px;
+	font-size: var(--h2-title-size);
 	margin-bottom: 20px;
   }

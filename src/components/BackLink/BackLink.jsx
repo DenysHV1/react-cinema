@@ -1,5 +1,5 @@
-import { Link } from "react-router";
 import s from "./BackLink.module.css";
+import { Link } from "react-router";
 import { TbArrowBigLeftLines } from "react-icons/tb";
 
 const BackLink = ({ link }) => {

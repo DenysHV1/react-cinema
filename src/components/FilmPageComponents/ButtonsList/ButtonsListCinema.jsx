@@ -16,6 +16,7 @@ import {
 //hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { closeMenu } from "../../../redux/filmsPage/reducers";
 
 const ButtonsList = () => {
   const totalPages = useSelector(totalPagesSelector);
@@ -57,9 +58,9 @@ const ButtonsList = () => {
   };
 
   return (
-    <div className={s.buttons_container}>
+    <div className={s.buttons_container} onClick={() => dispatch(closeMenu())}>
       <ul className={s.buttonsList}>
-        {pages.length > 0 &&
+        {pages?.length > 0 &&
           pages.map((item) => (
             <li key={`${item}bottom`}>
               <button

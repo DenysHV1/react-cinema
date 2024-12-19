@@ -21,19 +21,17 @@
   }
   
   .button_star {
-	color: rgb(231, 231, 0);
-	transition: transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+	color: var(--star-color);
+	transition: transform var(--transition-effect);
 	cursor: pointer;
   }
   
-  .button_star:hover {
+  .button_star:hover,
+  .button_star:focus,
+  .button_star:active {
 	transform: scale(1.2);
   }
-  
-  .button_star:focus {
-	transform: scale(1.2);
-  }
-  
+   
   .star1 {
 	width: 14px;
 	height: auto;
@@ -45,7 +43,7 @@
   }
   
   .star_value {
-	background-color: rgb(231, 231, 0);
+	background-color: var(--star-color);
 	color: black;
 	padding: 0 5px;
 	border-radius: 3px;

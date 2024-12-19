@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router";
-import "./App.css";
 import Layout from "./Layout/Layout";
 import { lazy, Suspense } from "react";
 import Keywords from "./FilmDetailsComponents/Keywords/Keywords";

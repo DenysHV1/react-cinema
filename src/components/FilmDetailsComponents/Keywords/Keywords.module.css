@@ -13,15 +13,17 @@
   font-weight: 600;
   padding: 3px;
   border-radius: 3px;
-  border: 2px solid red;
+  border: 2px solid var(--color-accent);
   display: flex;
   gap: 5px;
   text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
     0 0 3px #ff9900, 0 0 3px #ff6600;
   cursor: pointer;
-  transition: transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform var(--transition-effect);
 }
 
-.keywords_item:hover {
+.keywords_item:hover,
+.keywords_item:focus,
+.keywords_item:active{
   transform: scale(1.1);
 }

@@ -1,19 +1,19 @@
-.img{
-	width: 100%;
-	margin-bottom: 40px;
-	background-color: rgb(153, 164, 174);
+.img {
+  width: 100%;
+  margin-bottom: 40px;
+  background-color: rgb(153, 164, 174);
 }
 
-.name{
-	padding: 10px;
-	border: 1px solid white;
-	font-size: 30px;
-	margin-bottom: 20px;
+.name {
+  padding: 10px;
+  border: 1px solid white;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
-.link{
-	display: block;
-	padding: 10px;
-	border: 1px solid white;
-	font-size: 30px;
+.link {
+  display: block;
+  padding: 10px;
+  border: 1px solid white;
+  font-size: 30px;
 }

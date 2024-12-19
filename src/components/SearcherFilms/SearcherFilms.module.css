@@ -1,5 +1,5 @@
 .search_input {
-  border: 2px solid rgb(120, 120, 120);
+  border: var(--border);
   border-radius: 5px;
   width: 300px;
   height: 50px;
@@ -19,28 +19,26 @@
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.search_input::placeholder{
+.search_input::placeholder {
   color: rgba(240, 248, 255, 0.414);
 }
 
 .search_button {
-position: absolute;
-top: 12px;
-right: 9px;
+  position: absolute;
+  top: 12px;
+  right: 9px;
 }
 
-.search_svg{
+.search_svg {
   width: 30px;
   height: auto;
-  color: red;
+  color: var(--color-accent);
 }
-
 
 .search_form {
   display: flex;
   align-self: flex-end;
   position: relative;
   gap: 10px;
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
-

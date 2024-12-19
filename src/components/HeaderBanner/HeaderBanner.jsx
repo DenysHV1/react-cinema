@@ -5,6 +5,7 @@ import bannerVideo from './Titanic.mp4'
 import bannerBg from './background.jpg'
 
 const HeaderBanner = () => {
+
   return (
     <section className={css.headerBanner}>
       <div>
@@ -14,7 +15,7 @@ const HeaderBanner = () => {
           or generally gets people psyched to keep scrolling.
         </p>
         <div>
-          <Link to="movies">Movies</Link>
+          <Link to="films">Movies</Link>
         </div>
       </div>
       <video autoPlay muted loop>

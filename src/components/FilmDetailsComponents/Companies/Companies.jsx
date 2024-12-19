@@ -1,19 +1,26 @@
 import { Link, useLocation } from "react-router";
-import { imgLink } from "../../../redux/helpSettings";
 import s from "./Companies.module.css";
 
+//swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useSelector } from "react-redux";
+
+//redux
+import { filmDetailsErrorSelector } from "../../../redux/filmDetails/filmDetailsSelectors";
+import NoInfo from "../../NoInfo/NoInfo";
+import { imgLink } from "../../../redux/helpSettings";
 
 const Companies = ({ production_companies }) => {
   const location = useLocation();
+  const isError = useSelector(filmDetailsErrorSelector);
   return (
     <>
       <h2 className={s.title}>Companies</h2>
-      {production_companies?.length > 0 && (
+      {production_companies?.length > 0 && !isError ? (
         <div className={s.companies_container}>
           <Swiper
             cssMode={true}
@@ -52,7 +59,7 @@ const Companies = ({ production_companies }) => {
                     >
                       <img
                         src={`${imgLink}${logo_path}`}
-                        alt={name ? name : origin_country}
+                        alt={name || origin_country}
                       />
                     </Link>
                   </SwiperSlide>
@@ -60,6 +67,8 @@ const Companies = ({ production_companies }) => {
             )}
           </Swiper>
         </div>
+      ) : (
+        <NoInfo info="companies" />
       )}
     </>
   );

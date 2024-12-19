@@ -15,7 +15,6 @@ const SearchFilms = () => {
       return;
     }
     dispatch(addName(query.toLowerCase().trim()));
-
     navigate("/search");
     e.target.reset();
   };

@@ -1,13 +1,12 @@
 .companies_container {
   width: 100%;
-
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .companies_img_container {
   position: relative;
-  width: 100%; /* Растягивает на всю ширину */
-  aspect-ratio: 16 / 9; /* Задает пропорции контейнера */
+  width: 100%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background-color: #f0f0f0;
   border-radius: 8px;
@@ -20,13 +19,13 @@ margin-bottom: 20px;
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Обрезает изображение, чтобы заполнить контейнер */
+  object-fit: cover;
 }
 
 .title {
   display: flex;
   align-self: flex-start;
-  font-size: 25px;
+  font-size: var(--h2-title-size);
   line-height: 1;
   border-bottom: 1px solid white;
   margin: 20px 0;

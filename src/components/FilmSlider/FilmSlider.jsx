@@ -45,7 +45,7 @@ const FilmSlider = ({ list }) => {
         }}
       >
         {list?.length > 0 &&
-          list?.map(
+          list.map(
             ({
               poster_path,
               popularity,
@@ -63,7 +63,7 @@ const FilmSlider = ({ list }) => {
                   >
                     <img
                       src={`${imgLink}${poster_path}`}
-                      alt={title ? title : original_title}
+                      alt={title || original_title}
                     />
                     <div className={s.popularity_container}>
                       <FcLike className={s.like} />
@@ -84,6 +84,3 @@ const FilmSlider = ({ list }) => {
 
 export default FilmSlider;
 
-{
-  /* <SwiperSlide>Slide 4</SwiperSlide> */
-}

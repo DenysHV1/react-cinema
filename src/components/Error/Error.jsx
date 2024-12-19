@@ -3,9 +3,7 @@ import s from "./Error.module.css";
 const Error = () => {
   return (
     <>
-      <div className={s.error}>
-        NOT FOUND
-      </div>
+      <div className={s.error}>NOT FOUND😥</div>
     </>
   );
 };

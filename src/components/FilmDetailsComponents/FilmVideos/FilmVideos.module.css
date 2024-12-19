@@ -39,17 +39,17 @@
 .btn_svg {
   width: 45px;
   height: auto;
-  color: red;
+  color: var(--color-accent);
 }
 
 .iframeVideo {
   width: 310px;
   height: 174px;
-  border: 1px solid rgba(255, 255, 255, 0.43);
+  border: var(--border);
 }
 
 .title {
-  font-size: 30px;
+  font-size: var(--h2-title-size);
   margin-bottom: 10px;
   display: flex;
   align-self: flex-start;
@@ -80,9 +80,9 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1180px) {
   .iframeVideo {
-    width: 1220px;
+    width: 1120px;
     height: 600px;
   }
 }
