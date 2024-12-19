@@ -21,7 +21,7 @@ const Reviews = ({ filmID }) => {
 
   return (
     <>
-      {reviews.length > 0 && (
+      {reviews?.length > 0 && (
         <section>
           <h2 className={s.title}>Reviews</h2>
           <ul className={s.reviews_list}>

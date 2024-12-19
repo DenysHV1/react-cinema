@@ -22,11 +22,11 @@ const Cast = () => {
   }, [dispatch, filmID]);
 
 useEffect(() => {
-	if(cast.length > 8){
+	if(cast?.length > 8){
 		setShowMoreBtn(true)
 	}
 
-	if(cast.length > elements) {
+	if(cast?.length > elements) {
 		setBtnText('Show more')
 	}else{
 		setBtnText('hide')
@@ -34,7 +34,7 @@ useEffect(() => {
 },[cast, elements])
 
 const handlerShowMore = () => {
-if(cast.length > elements) {
+if(cast?.length > elements) {
 	setBtnText('Show more')
 	setElements(prevEl => prevEl += 8)
 }else{
@@ -46,7 +46,7 @@ if(cast.length > elements) {
     <>
       <ul className={s.cast_list}>
         {cast?.length > 0 &&
-          cast?.map(({ character, name, id, popularity, profile_path, original_name }, idx) => profile_path && idx < elements && (
+          cast.map(({ character, name, id, popularity, profile_path, original_name }, idx) => profile_path && idx < elements && (
             <li key={id}>
 				<div className={s.cast_item}>
 					<div className={s.img_container}>
