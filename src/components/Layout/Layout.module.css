@@ -116,7 +116,6 @@
   display:flex;
   flex-direction: column;
   justify-content: space-around;
-  al
 }
 .closeMenu {
   position: absolute;
@@ -133,6 +132,7 @@
   transition: background-color var(--transition-effect),
     border var(--transition-effect);
 }
+
 .closeMenu svg {
   width: 24px;
   height: 24px;
