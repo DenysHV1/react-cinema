@@ -100,8 +100,7 @@
 
 .budget_text {
   font-weight: 800;
-  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
-    0 0 3px #ff9900, 0 0 3px #ff6600;
+  text-shadow: var(--special-text-shadow);
 }
 
 /* genres */
@@ -117,8 +116,7 @@
   background-color: rgba(240, 248, 255, 0.162);
   padding: 3px;
   border-radius: 3px;
-  text-shadow: 0 0 1px #ffd700, 0 0 1px #ffd700, 0 0 1px #ffcc33,
-    0 0 1px #ff9900, 0 0 1px #ff6600;
+  text-shadow: var(--special-text-shadow);
   border: 1px solid white;
   cursor: pointer;
   transition: transform var(--transition-effect);

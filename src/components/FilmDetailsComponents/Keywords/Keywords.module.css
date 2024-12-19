@@ -16,8 +16,7 @@
   border: 2px solid var(--color-accent);
   display: flex;
   gap: 5px;
-  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
-    0 0 3px #ff9900, 0 0 3px #ff6600;
+  text-shadow: var(--special-text-shadow);
   cursor: pointer;
   transition: transform var(--transition-effect);
 }

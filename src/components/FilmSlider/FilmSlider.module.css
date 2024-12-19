@@ -16,10 +16,9 @@
   padding: 3px;
   border-radius: 3px;
   border: 2px solid var(--color-accent);
-  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
-    0 0 3px #ff9900, 0 0 3px #ff6600;
+  text-shadow: var(--special-text-shadow);
   cursor: pointer;
-  transition: transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform var(--transition-effect);
 }
 
 .popularity_container:hover {
@@ -40,8 +39,7 @@
   padding: 3px;
   border-radius: 3px;
   border: 2px solid var(--color-accent);
-  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
-    0 0 3px #ff9900, 0 0 3px #ff6600;
+  text-shadow: var(--special-text-shadow);
   cursor: pointer;
   transition: transform var(--transition-effect);
 }

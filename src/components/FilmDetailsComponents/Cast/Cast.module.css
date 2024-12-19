@@ -45,8 +45,7 @@
   border-radius: 3px;
   border: 2px solid var(--color-accent);
   gap: 5px;
-  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
-    0 0 3px #ff9900, 0 0 3px #ff6600;
+  text-shadow: var(--special-text-shadow);
   transition: transform var(--transition-effect);
 }
 
@@ -86,8 +85,7 @@
   border-radius: 3px;
   border: 2px solid var(--color-accent);
   gap: 5px;
-  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
-    0 0 3px #ff9900, 0 0 3px #ff6600;
+  text-shadow: var(--special-text-shadow);
   transition: transform  var(--transition-effect),
     background-color var(--transition-effect);
 }

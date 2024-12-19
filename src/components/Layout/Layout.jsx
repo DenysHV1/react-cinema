@@ -14,11 +14,11 @@ import { NavLink, Outlet } from "react-router";
 import { TiThMenuOutline } from "react-icons/ti";
 // import { BiLogIn } from "react-icons/bi";
 // import { TbLogout2 } from "react-icons/tb";
-import { MdOutlineDoubleArrow } from "react-icons/md";
 import { SiReactos } from "react-icons/si";
 
 //components
 import SearcherFilms from "../SearcherFilms/SearcherFilms";
+import { IoCloseSharp } from "react-icons/io5";
 
 const Layout = () => {
   const activeLink = ({ isActive }) => {
@@ -67,23 +67,20 @@ const Layout = () => {
           </button>
         </nav>
         <SearcherFilms />
-        <div
-          className={
-            isOpenModal ? [s.mobileMenu, s.isOpen].join(" ") : s.mobileMenu
-          }
-        >
+      </header>
+       <div className={isOpenModal ? [s.mobileMenu, s.isOpen].join(" ") : s.mobileMenu}>
           <nav className={s.mobileInner}>
             <button
               className={s.closeMenu}
               onClick={() => dispatch(closeMenu())}
             >
-              <MdOutlineDoubleArrow />
+              <IoCloseSharp />
             </button>
 
-            <NavLink to={"/"} className={activeLink}>
+            <NavLink to={"/"} className={activeLink} onClick={() => dispatch(closeMenu())}>
               <SiReactos className={s.logo} /> Cinema
             </NavLink>
-            <NavLink to={"/films"} className={activeLink}>
+            <NavLink to={"/films"} className={activeLink} onClick={() => dispatch(closeMenu())}>
               Films
             </NavLink>
             {/* <ul className={s.authPagesMobile}>
@@ -100,8 +97,7 @@ const Layout = () => {
               </li>
             </ul> */}
           </nav>
-        </div>
-      </header>
+       </div>
       <main>
         <Outlet />
       </main>

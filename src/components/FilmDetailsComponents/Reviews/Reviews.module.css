@@ -69,13 +69,11 @@
   border: 2px solid var(--color-accent);
   display: flex;
   gap: 5px;
-  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
-    0 0 3px #ff9900, 0 0 3px #ff6600;
+  text-shadow: var(--special-text-shadow);
 }
 
 .rating > span {
-  text-shadow: 0 0 3px #ffd700, 0 0 3px #ffd700, 0 0 3px #ffcc33,
-    0 0 3px #ff9900, 0 0 3px #ff6600;
+  text-shadow: var(--special-text-shadow);
   color: rgb(32, 13, 85);
 }
 
