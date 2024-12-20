@@ -27,7 +27,7 @@ const Cast = () => {
   const isError = useSelector(filmDetailsErrorSelector);
 
   const [showMoreBtn, setShowMoreBtn] = useState(false);
-  const [elements, setElements] = useState(7);
+  const [elements, setElements] = useState(8);
   const [btnText, setBtnText] = useState("Show more");
 
   useEffect(() => {
@@ -35,16 +35,16 @@ const Cast = () => {
   }, [dispatch, filmID]);
 
   useEffect(() => {
-    cast?.length > 7 ? setShowMoreBtn(true) : setShowMoreBtn(false);
-    cast?.length > elements ? setBtnText("Show more") : setBtnText("hide");
+    setShowMoreBtn(cast?.length > 8);
+    setBtnText(cast?.length > elements ? "Show more" : "Hide");
   }, [cast, elements]);
 
   const handlerShowMore = () => {
     if (cast?.length > elements) {
-      setBtnText("Show more");
-      setElements((prevEl) => (prevEl += 7));
+      setElements((prevEl) => prevEl + 8);
+    } else {
+      setElements(8);
     }
-    setElements(7);
   };
 
   return (
@@ -58,7 +58,7 @@ const Cast = () => {
               idx
             ) =>
               profile_path &&
-              idx <= elements && (
+              idx < elements && (
                 <li key={id}>
                   <div className={s.cast_item}>
                     <div className={s.img_container}>

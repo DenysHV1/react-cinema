@@ -6,8 +6,6 @@ import Loader from "./Loader/Loader";
 import Changes from "./FilmDetailsComponents/Changes/Changes";
 import Cast from "./FilmDetailsComponents/Cast/Cast";
 
-// const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
-// const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const FilmDetailsPage = lazy(() =>
   import("../pages/FilmDetailsPage/FilmDetailsPage")
@@ -33,8 +31,6 @@ function App() {
             <Route path="reviews/:reviewID" element={<ReviewPage />} />
             <Route path="company/:companyID" element={<CompanyPage />} />
             <Route path="search" element={<SearchPage />} />
-            {/* <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} /> */}
             <Route path="*" element={<Navigate to={"/"} />} />
           </Route>
         </Routes>

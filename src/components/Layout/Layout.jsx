@@ -12,14 +12,11 @@ import { NavLink, Outlet } from "react-router";
 
 //icons
 import { TiThMenuOutline } from "react-icons/ti";
-// import { BiLogIn } from "react-icons/bi";
-// import { TbLogout2 } from "react-icons/tb";
 import { SiReactos } from "react-icons/si";
 
 //components
 import SearcherFilms from "../SearcherFilms/SearcherFilms";
 import { IoCloseSharp } from "react-icons/io5";
-
 const Layout = () => {
   const activeLink = ({ isActive }) => {
     return isActive
@@ -45,18 +42,6 @@ const Layout = () => {
                 </NavLink>
               </li>
             </ul>
-            {/* <ul className={s.authNavPC}>
-              <li>
-                <NavLink to={"/login"} className={activeLink}>
-                  <BiLogIn /> Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={"/register"} className={activeLink}>
-                  <TbLogout2 /> Register
-                </NavLink>
-              </li>
-            </ul> */}
           </div>
 
           <button
@@ -92,19 +77,6 @@ const Layout = () => {
           >
             Films
           </NavLink>
-          {/* <ul className={s.authPagesMobile}>
-              <li>
-                <NavLink to={"/login"} className={activeLink}>
-                  <BiLogIn /> Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={"/register"} className={activeLink}>
-                  <TbLogout2 />
-                  Register
-                </NavLink>
-              </li>
-            </ul> */}
         </nav>
       </div>
       <main>
