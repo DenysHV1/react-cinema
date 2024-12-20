@@ -8,10 +8,9 @@ const HeaderBanner = () => {
   return (
     <section className={css.headerBanner}>
       <div>
-        <p>REACT CINEMA</p>
+        <p>REACT FILMS</p>
         <p>
-          Subheading that sets up context, shares more info about the website,
-          or generally gets people psyched to keep scrolling.
+        Explore more about our journey, dive into exciting details, and get inspired as you scroll down!
         </p>
         <div>
           <Link to="films">Movies</Link>
