@@ -12,10 +12,31 @@ import { Link, useLocation } from "react-router";
 import { imgLink } from "../../redux/helpSettings";
 import { FcLike } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
+import { useState } from "react";
 
 const FilmSlider = ({ list }) => {
   const location = useLocation();
 
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [hoverTitle, setHoverTitle] = useState("");
+
+  const style = {
+    position: "fixed",
+    top: `${position.y - 20}px`,
+    left: `${position.x}px`,
+    pointerEvents: "none",
+    transform: "translate(-50%, -50%)",
+    zIndex: 9999,
+  };
+
+  const handlerAddMouseMove = (e, title) => {
+    setPosition({ x: e.clientX, y: e.clientY });
+    setHoverTitle(title);
+  };
+
+  const handlerRemoveMouseMove = () => {
+    setHoverTitle("");
+  };
   return (
     <div className={s.FilmSlider_section}>
       <Swiper
@@ -59,7 +80,9 @@ const FilmSlider = ({ list }) => {
                   <Link
                     to={`/films/${id}`}
                     state={location}
-                    className={s.recommendations_item}
+                    className={s.FilmSlider_item}
+                    onMouseMove={(e) => handlerAddMouseMove(e, title)}
+                    onMouseLeave={handlerRemoveMouseMove}
                   >
                     <img
                       src={`${imgLink}${poster_path}`}
@@ -78,6 +101,11 @@ const FilmSlider = ({ list }) => {
               )
           )}
       </Swiper>
+      {hoverTitle && (
+        <span className={s.custom_cursor} style={style}>
+          {hoverTitle}
+        </span>
+      )}
     </div>
   );
 };
