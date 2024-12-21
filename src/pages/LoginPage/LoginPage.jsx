@@ -7,7 +7,7 @@ const Login = () => {
       <video autoPlay muted loop className="only-video-banner">
         <source src={bannerVideo} type="video/mp4" />
       </video>
-      <LoginForm />;
+      <LoginForm />
     </section>
   );
 };
