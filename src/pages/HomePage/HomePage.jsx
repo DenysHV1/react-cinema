@@ -37,7 +37,7 @@ const HomePage = () => {
       {isLoading && <Loader />}
       {!isError ? (
         <section>
-          <h1 className={s.title}>Nuw Playing</h1>
+          <h1 className={s.title}>Now Playing</h1>
           <FilmsSlider list={changes} />
           <FilmsSlider list={changes2} />
         </section>
