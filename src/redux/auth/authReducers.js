@@ -4,7 +4,7 @@ import { createRequestTokenThunk, createSessionThunk } from "./authThunks";
 const initialState = {
   requestToken: null,
   sessionId: null,
-  isAuthenticated: false,
+  isLoggedIn: false,
   isLoading: false,
   error: null,
 };

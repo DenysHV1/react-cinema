@@ -1,0 +1,116 @@
+.logo {
+  width: 27px;
+  height: 27px;
+}
+
+.nav {
+  position: relative;
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid white;
+  padding-bottom: 10px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menuDesctop {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 140px;
+  /* width: 100%; */
+}
+
+.authNavPC {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* LINKS */
+.activeLink {
+  color: var(--color-accent);
+}
+.unActiveLink {
+  color: white;
+}
+.navLink {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* BURGER */
+.burgerMenu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.burgerMenu > svg {
+  color: white;
+  width: 30px;
+  height: 35px;
+}
+
+.logout_btn{
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: white;
+  font-size: 20px;
+  background: -webkit-linear-gradient(90deg,#000000,#7503a6,#000000);
+   background: linear-gradient(90deg,#000000,#7503a6,#000000);
+   transition: border var(--transition-effect);
+}
+
+.logout_btn:hover,
+.logout_btn:focus,
+.logout_btn:active{
+  border: 1px solid var(--color-accent);
+}
+
+.logout_btn > svg{
+  width: 30px;
+  height: 35px;
+}
+
+.films_svg{
+  width: 30px;
+  height: 30px;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .burgerMenu {
+    display: none;
+  }
+
+  .menuDesctop {
+    display: flex;
+  }
+}

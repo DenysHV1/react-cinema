@@ -213,3 +213,11 @@ img {
   width: 30px;
   height: auto;
 }
+
+.only-video-banner{
+  display: block;
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
