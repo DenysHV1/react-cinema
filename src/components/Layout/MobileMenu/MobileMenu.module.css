@@ -32,6 +32,7 @@
   padding: 72px 72px 24px 72px;
   transition: transform var(--transition-effect);
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
   justify-content: space-around;
   background-image: url(../../../assets/background.jpg);
@@ -80,11 +81,14 @@
 }
 
 .user_item {
-  border: 2px solid #7503a600;
+  border-top: 2px solid #7503a654;
+  border-bottom: 2px solid #7503a654;
   padding: 10px;
   cursor: pointer;
+  
+transform: rotate(-20deg);
   transition: background-color var(--transition-effect),
-    border var(--transition-effect);
+    border var(--transition-effect), transform var(--transition-effect);
 }
 
 .user_item:hover,
@@ -92,7 +96,9 @@
 .user_item:focus {
   background: -webkit-linear-gradient(90deg, #000000, #7503a6, #000000);
   background: linear-gradient(90deg, #000000, #7503a6, #000000);
-  border: 2px solid #7503a6;
+  border-top: 2px solid #7503a6;
+border-bottom: 2px solid #7503a6;
+transform: translateX(-10px);
 }
 
 .activeLink {
@@ -107,10 +113,17 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+  transition: transform var(--transition-effect);
+}
+
+.navLink:hover,
+.navLink:focus{
+  transform: scale(1.1);
 }
 
 .logout_btn{
-
+border-top: 2px solid #7503a6;
+border-bottom: 2px solid #7503a6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,13 +131,16 @@
   padding: 10px;
   background: -webkit-linear-gradient(90deg,#000000,#7503a6,#000000);
    background: linear-gradient(90deg,#000000,#7503a6,#000000);
-   transition: color var(--transition-effect);
+   transition: color var(--transition-effect), transform var(--transition-effect);
+   transform: rotate(-20deg);
+   margin-bottom: 75px;
 }
 
 .logout_btn:hover,
 .logout_btn:focus,
 .logout_btn:active{
 color: var(--color-accent);
+transform: translate(10px);
 }
 
 .logout_btn > svg{

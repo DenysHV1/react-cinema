@@ -3,9 +3,13 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 20px 30px 0 30px;
+  width: 110%;
+  margin-left: -5%;
   gap: 10px;
   height: auto;
   border-bottom: 2px solid white;
+  transform: scale(1.1);
 }
 
 .container {
@@ -21,11 +25,22 @@
   .container {
     max-width: 480px;
   }
+
+  .header {
+    transform: scale(1);
+    width: 113%;
+    margin-left: -6.5%;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
+  }
+
+  .header {
+    width: 108%;
+    margin-left: -4%;
   }
 }
 
@@ -33,11 +48,17 @@
   .container {
     max-width: 1000px;
   }
+
+  .header {
+    width: 104%;
+    margin-left: -2%;
+  }
+  
 }
 
 @media screen and (min-width: 1180px) {
   .container {
     max-width: 1180px;
-    padding: 30px;
+    
   }
 }

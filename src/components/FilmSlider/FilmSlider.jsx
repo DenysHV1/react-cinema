@@ -3,7 +3,7 @@ import s from "./FilmSlider.module.css";
 //swiper
 //npm install swiper@latest
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -42,10 +42,9 @@ const FilmSlider = ({ list }) => {
       <Swiper
         cssMode={true}
         navigation={true}
-        pagination={true}
         mousewheel={true}
         keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        modules={[Navigation, Mousewheel, Keyboard]}
         breakpoints={{
           320: {
             slidesPerView: 2,

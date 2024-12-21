@@ -1,15 +1,16 @@
 .headerBanner {
   display: flex;
-  width: 100%;
+  width: 106.4%;
+  margin-left: -3.2%;
   height: 100vh;
   position: relative;
   align-items: center;
-  margin-bottom: 20px;
 }
 .headerBanner > video {
   display: block;
   position: absolute;
-  width: 100%;
+  width: 104%;
+  margin-left: -2%;
   object-fit: cover;
   height: 100%;
   opacity: 1;
@@ -31,7 +32,7 @@
   position: absolute;
   z-index: 1;
   max-width: 844px;
-  margin-left: 20px;
+  padding: 20px;
 }
 
 .headerBanner > div > p:first-child {
@@ -53,19 +54,7 @@
   gap: 27px;
   margin-top: 26px;
 }
-.headerBanner > div > div > button {
-  display: block;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-top: 9px;
-  padding-bottom: 9px;
-  background-color: #000000;
-  border-radius: 49px;
-  border: 0px;
-  cursor: pointer;
-  color: #fff;
-  font-size: 19px;
-}
+
 .headerBanner > div > div > a {
   display: block;
   padding-left: 32px;
@@ -81,21 +70,7 @@
   font-family: "Inter", sans-serif;
   text-decoration: none;
 }
-.headerBanner > div > div > a:hover {
-  transition: 0.2s ease;
-  background-color: #141414;
-}
-.headerBanner > div > div > button:hover {
-  transition: 0.2s ease;
-  background-color: #141414;
-}
-.headerBanner > div > div > button:last-of-type {
-  background-color: #c01616;
-}
-.headerBanner > div > div > button:last-of-type:hover {
-  transition: 0.2s ease;
-  box-shadow: 0 0 15px #c01616;
-}
+
 
 @media screen and (min-width: 768px) {
   .headerBanner > div > p:first-child {
@@ -103,6 +78,17 @@
   }
 
   .headerBanner > div {
+    margin-left: 20px;
+  }
+
+  .headerBanner > div > div > a {
+    margin-left: 20px;
+  }
+
+  .headerBanner > div > p:first-child {
+    margin-left: 20px;
+  }
+  .headerBanner > div > p:last-of-type {
     margin-left: 20px;
   }
 }
