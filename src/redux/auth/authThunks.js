@@ -1,17 +1,20 @@
-// authThunks.js
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL, KEY } from "../helpSettings";
 
+const KEY = "ee3e9c5f4ba904ebcf317d566e2eec32";
+const BASE_URL = "https://api.themoviedb.org";
 
-// Генерация токена запроса
+//this is taking token
 export const createRequestTokenThunk = createAsyncThunk(
   "auth/createRequestToken",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`${BASE_URL}/3/authentication/token/new`, {
-        params: { api_key: KEY },
-      });
+      const response = await axios.get(
+        `${BASE_URL}/3/authentication/token/new`,
+        {
+          params: { api_key: KEY },
+        }
+      );
       return response.data.request_token;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -19,17 +22,44 @@ export const createRequestTokenThunk = createAsyncThunk(
   }
 );
 
-// Создание сессии после авторизации токена
+export const validateTokenWithLoginThunk = createAsyncThunk(
+  "auth/validateTokenWithLogin",
+  async ({ username, password, requestToken }, thunkAPI) => {
+
+    console.log({ username, password, requestToken });
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/3/authentication/token/validate_with_login`,
+        {
+          username,
+          password,
+          request_token: requestToken,
+        },
+        {
+          params: { api_key: KEY },
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      return response.data.request_token;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const createSessionThunk = createAsyncThunk(
   "auth/createSession",
-  async (requestToken, thunkAPI) => {
+  async (validatedToken, thunkAPI) => {
     try {
       const response = await axios.post(
         `${BASE_URL}/3/authentication/session/new`,
-        { request_token: requestToken },
-        { params: { api_key: KEY } }
+        { request_token: validatedToken },
+        {
+          params: { api_key: KEY },
+          headers: { "Content-Type": "application/json" },
+        }
       );
-      return response.data.session_id;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

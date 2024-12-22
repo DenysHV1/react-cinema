@@ -2,10 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createRequestTokenThunk, createSessionThunk } from "./authThunks";
 
 const initialState = {
-  requestToken: null,
+  token: null,
   sessionId: null,
-  isLoggedIn: false,
-  isLoading: false,
+  loading: false,
   error: null,
 };
 
@@ -13,42 +12,41 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logout(state) {
-      state.requestToken = null;
-      state.sessionId = null;
-      state.isAuthenticated = false;
-      localStorage.removeItem("sessionId");
+    reducers: {
+      logout: (state) => {
+        state.token = null;
+        state.sessionId = null;
+      },
     },
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(createRequestTokenThunk.pending, state => {
-        state.isLoading = true;
+      ///createRequestTokenThunk
+      .addCase(createRequestTokenThunk.pending, (state) => {
+        state.loading = true;
         state.error = null;
       })
-      .addCase(createRequestTokenThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.requestToken = action.payload;
+      .addCase(createRequestTokenThunk.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.token = payload;
       })
-      .addCase(createRequestTokenThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
-
-    builder
-      .addCase(createSessionThunk.pending, state => {
-        state.isLoading = true;
+      .addCase(createRequestTokenThunk.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
+      /// createSessionThunk
+      .addCase(createSessionThunk.pending, (state) => {
+        state.loading = true;
         state.error = null;
       })
-      .addCase(createSessionThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.sessionId = action.payload;
-        state.isAuthenticated = true;
-        localStorage.setItem("sessionId", action.payload);
+      .addCase(createSessionThunk.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.sessionId = payload.session_id;
+        console.log(payload.session_id);
       })
-      .addCase(createSessionThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+      .addCase(createSessionThunk.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
       });
   },
 });

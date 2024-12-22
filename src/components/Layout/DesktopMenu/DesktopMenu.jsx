@@ -3,7 +3,7 @@ import { FaUserSecret } from "react-icons/fa";
 import { SiReactos } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router";
-import { selectIsLoggedInAuth } from "../../../redux/auth/authSelectors";
+import { selectSessionIdAuth } from "../../../redux/auth/authSelectors";
 import { TiThMenuOutline } from "react-icons/ti";
 
 import { toggleMenu } from "../../../redux/filmsPage/reducers";
@@ -11,7 +11,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { BiMoviePlay } from "react-icons/bi";
 
 const DesktopMenu = () => {
-  const isLoggedIn = useSelector(selectIsLoggedInAuth);
+  const sessionId = useSelector(selectSessionIdAuth);
   const dispatch = useDispatch();
 
   const activeLink = ({ isActive }) => {
@@ -33,7 +33,7 @@ const DesktopMenu = () => {
               Films
             </NavLink>
           </li>
-          {isLoggedIn && (
+          {sessionId && (
             <li>
               <NavLink to={"/account"} className={activeLink}>
                 <FaUserSecret />
@@ -41,7 +41,7 @@ const DesktopMenu = () => {
               </NavLink>
             </li>
           )}
-          {isLoggedIn && (
+          {sessionId && (
             <li>
               <button type="button" className={s.logout_btn}>
                 <IoLogOutOutline />
@@ -49,14 +49,14 @@ const DesktopMenu = () => {
               </button>
             </li>
           )}
-          {!isLoggedIn && (
+          {!sessionId && (
             <li>
               <NavLink to={"/login"} className={activeLink}>
                 Login
               </NavLink>
             </li>
           )}
-          {!isLoggedIn && (
+          {!sessionId && (
             <li>
               <NavLink to={"/register"} className={activeLink}>
                 Register

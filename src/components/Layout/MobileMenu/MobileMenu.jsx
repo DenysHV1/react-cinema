@@ -9,12 +9,12 @@ import { SiReactos } from "react-icons/si";
 import { FaUserSecret } from "react-icons/fa";
 
 //redux
-import { selectIsLoggedInAuth } from "../../../redux/auth/authSelectors";
+import { selectSessionIdAuth } from "../../../redux/auth/authSelectors";
 import { isOpenSelector } from "../../../redux/filmsPage/selectors";
 import { closeMenu } from "../../../redux/filmsPage/reducers";
 
 const MobileMenu = () => {
-  const isLoggedIn = useSelector(selectIsLoggedInAuth);
+  const sessionId = useSelector(selectSessionIdAuth);
   const isOpenModal = useSelector(isOpenSelector);
   const dispatch = useDispatch();
 
@@ -55,7 +55,7 @@ const MobileMenu = () => {
           </li>
         </ul>
         <ul className={s.bottom_list}>
-          {isLoggedIn && (
+          {sessionId && (
             <li className={s.user_item}>
               <NavLink
                 to={"/account"}
@@ -67,14 +67,14 @@ const MobileMenu = () => {
               </NavLink>
             </li>
           )}
-          {isLoggedIn && (
+          {sessionId && (
             <li>
               <button type="button" className={s.logout_btn}>
                 <IoLogOutOutline />
               </button>
             </li>
           )}
-          {!isLoggedIn && (
+          {!sessionId && (
             <li>
               <NavLink
                 to={"/login"}
@@ -85,7 +85,7 @@ const MobileMenu = () => {
               </NavLink>
             </li>
           )}
-          {!isLoggedIn && (
+          {!sessionId && (
             <li>
               <NavLink
                 to={"/register"}
