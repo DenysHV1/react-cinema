@@ -75,19 +75,8 @@ const Changes = () => {
 
                 return (
                   videoKey && (
-                    <SwiperSlide
-                      key={id}
-                      className={s.videoContainer}
-                      onClick={() => {
-                        console.log('fff');
-                        
-                        return dispatch(
-                          addVideo({ id, key: videoKey, name: videoName })
-                        );
-                      }}
-                    >
+                    <SwiperSlide key={id} className={s.videoContainer}>
                       <iframe
-                      style={{ pointerEvents: "none" }}
                         className={s.iframeVideo}
                         src={`https://www.youtube.com/embed/${videoKey}`}
                         title={videoName}
@@ -96,6 +85,14 @@ const Changes = () => {
                         allowFullScreen
                       ></iframe>
                       <p className={s.video_name}>{videoName}</p>
+                      <button
+                      className={s.addVideo}
+                        onClick={() =>
+                          dispatch(
+                            addVideo({ id, key: videoKey, name: videoName })
+                          )
+                        }
+                      >Add video</button>
                       {isLoading && <Loader />}
                     </SwiperSlide>
                   )

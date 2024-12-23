@@ -1,5 +1,27 @@
+import s from './FavoritesPage.module.css'
+
+import { NavLink, Outlet } from "react-router";
+
 const FavoritesPage = () => {
-  return <>Hello</>;
+
+    const activeLink = ({ isActive }) => {
+      return isActive
+        ? [s.activeLink, s.navLink].join(" ")
+        : [s.unActiveLink, s.navLink].join(" ");
+    };
+
+  return (
+    <>
+      <section>
+        <nav className={s.nav}>
+          <NavLink to={`userVideos`} className={activeLink}>My videos</NavLink>
+        </nav>
+      </section>
+      <section style={{minHeight: '90vh'}}>
+        <Outlet />
+      </section>
+    </>
+  );
 };
 
 export default FavoritesPage;

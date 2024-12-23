@@ -1,0 +1,31 @@
+.nav{
+	margin: 20px 0;
+	background-color: black;
+	padding: 20px 40px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 104%;
+	margin-left: -2%;
+}
+
+.activeLink {
+	color: var(--color-accent);
+  }
+  .unActiveLink {
+	color: white;
+  }
+  .navLink {
+	font-size: 20px;
+	font-weight: 800;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	transition: transform var(--transition-effect);
+  }
+  
+  .navLink:hover,
+  .navLink:focus{
+	transform: scale(1.1);
+  }

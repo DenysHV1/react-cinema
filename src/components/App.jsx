@@ -5,6 +5,7 @@ import Keywords from "./FilmDetailsComponents/Keywords/Keywords";
 import Loader from "./Loader/Loader";
 import Changes from "./FilmDetailsComponents/Changes/Changes";
 import Cast from "./FilmDetailsComponents/Cast/Cast";
+import UserVideos from "./User/UserVideos/UserVideos";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const FilmDetailsPage = lazy(() =>
@@ -41,8 +42,8 @@ function App() {
             <Route path="search" element={<SearchPage />} />
             {/* <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegistrationPage />} /> */}
-            <Route path="account" element={<FavoritesPage />} >
-              
+            <Route path="account" element={<FavoritesPage />}>
+              <Route path="userVideos" element={<UserVideos />} />
             </Route>
             <Route path="*" element={<Navigate to={"/"} />} />
           </Route>

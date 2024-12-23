@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 //components
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -22,14 +22,14 @@ const LastVideos = () => {
   
   return (
     <>
+	<h2 className={s.title}>Continue watching</h2>
       {lastVideos?.length > 0 ? (
         <Swiper
           cssMode={true}
           navigation={true}
-          pagination={true}
           mousewheel={true}
           keyboard={true}
-          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+          modules={[Navigation, Mousewheel, Keyboard]}
           breakpoints={{
             320: {
               slidesPerView: 1,
@@ -40,18 +40,18 @@ const LastVideos = () => {
               spaceBetween: 15,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               spaceBetween: 20,
             },
             1440: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               spaceBetween: 20,
             },
           }}
         >
           {lastVideos.map(
-            ({ id, key, name }) =>
-              key && (
+            ({ id, key, name }, idx) =>
+              key && idx < 11 &&(
                 <SwiperSlide key={id} className={s.videoContainer}>
                   <iframe
                     className={s.iframeVideo}
@@ -61,7 +61,6 @@ const LastVideos = () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
-                  <p className={s.video_name}>{name}</p>
                 </SwiperSlide>
               )
           )}
