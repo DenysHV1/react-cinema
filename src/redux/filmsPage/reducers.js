@@ -43,6 +43,7 @@ const resultFulfilled = (state, { payload }) => {
 };
 
 const resultFulfilledByPage = (state, { payload }) => {
+  // state.films = [...state.films, payload.results];
   state.films = payload.results;
   state.page = payload.page;
   state.isLoading = false;
