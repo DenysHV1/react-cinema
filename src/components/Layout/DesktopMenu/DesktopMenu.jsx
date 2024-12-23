@@ -2,7 +2,7 @@ import s from "./DesktopMenu.module.css";
 import { FaUserSecret } from "react-icons/fa";
 import { SiReactos } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { selectSessionIdAuth } from "../../../redux/auth/authSelectors";
 import { TiThMenuOutline } from "react-icons/ti";
 
@@ -14,12 +14,18 @@ import { loginUser, logoutUser } from "../../../redux/auth/authReducers";
 const DesktopMenu = () => {
   const sessionId = useSelector(selectSessionIdAuth);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const activeLink = ({ isActive }) => {
     return isActive
       ? [s.activeLink, s.navLink].join(" ")
       : [s.unActiveLink, s.navLink].join(" ");
   };
+
+const handleLogout = () => {
+  dispatch(logoutUser())
+  navigate('/')
+}
 
   return (
     <>
@@ -47,7 +53,7 @@ const DesktopMenu = () => {
               </li>
             )}
             {sessionId && (
-              <li onClick={() => dispatch(logoutUser())}>
+              <li onClick={handleLogout}>
                 <button type="button" className={s.logout_btn} >
                   <IoLogOutOutline />
                   Logout

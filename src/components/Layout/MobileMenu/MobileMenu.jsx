@@ -1,6 +1,6 @@
 import s from "./MobileMenu.module.css";
 
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 //icons
@@ -20,6 +20,7 @@ const MobileMenu = () => {
   const sessionId = useSelector(selectSessionIdAuth);
   const isOpenModal = useSelector(isOpenSelector);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const activeLink = ({ isActive }) => {
     return isActive
@@ -27,8 +28,11 @@ const MobileMenu = () => {
       : [s.unActiveLink, s.navLink].join(" ");
   };
 
-  console.log(sessionId);
-  
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    dispatch(closeMenu());
+    navigate("/");
+  };
 
   return (
     <div
@@ -78,7 +82,11 @@ const MobileMenu = () => {
           )}
           {!sessionId && (
             <li>
-              <button type="button" className={s.logout_btn} onClick={() => dispatch(loginUser())}>
+              <button
+                type="button"
+                className={s.logout_btn}
+                onClick={() => dispatch(loginUser())}
+              >
                 login
                 <IoLogOutOutline />
               </button>
@@ -86,7 +94,11 @@ const MobileMenu = () => {
           )}
           {sessionId && (
             <li>
-              <button type="button" className={s.logout_btn} onClick={() => dispatch(logoutUser())}>
+              <button
+                type="button"
+                className={s.logout_btn}
+                onClick={handleLogout}
+              >
                 logout
                 <IoLogOutOutline />
               </button>
