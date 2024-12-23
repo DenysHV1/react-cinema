@@ -15,10 +15,10 @@ const ReviewPage = lazy(() => import("../pages/ReviewPage/ReviewPage"));
 const SearchPage = lazy(() => import("../pages/SearchPage/SearchPage"));
 const CompanyPage = lazy(() => import("../pages/CompanyPage/CompanyPage"));
 
-const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
-const RegistrationPage = lazy(() =>
-  import("../pages/RegistrationPage/RegistrationPage")
-);
+// const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
+// const RegistrationPage = lazy(() =>
+//   import("../pages/RegistrationPage/RegistrationPage")
+// );
 const FavoritesPage = lazy(() =>
   import("../pages/FavoritesPage/FavoritesPage")
 );
@@ -39,9 +39,11 @@ function App() {
             <Route path="reviews/:reviewID" element={<ReviewPage />} />
             <Route path="company/:companyID" element={<CompanyPage />} />
             <Route path="search" element={<SearchPage />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="register" element={<RegistrationPage />} />
-            <Route path="account" element={<FavoritesPage />} />
+            {/* <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegistrationPage />} /> */}
+            <Route path="account" element={<FavoritesPage />} >
+              
+            </Route>
             <Route path="*" element={<Navigate to={"/"} />} />
           </Route>
         </Routes>

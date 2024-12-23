@@ -50,7 +50,7 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="#">Support</a>
+            <a href="#" className={s.disabled}>Support</a>
           </li>
           <li>
             <a href="mailto:denyagarkusha2@gmail.com">Contact us</a>
@@ -58,7 +58,7 @@ const Footer = () => {
         </ul>
         <ul className={s.list_navigation}>
           <li>
-            <Link>FAQ</Link>
+            <Link className={s.disabled}>FAQ</Link>
           </li>
           <li>
             <a
@@ -69,26 +69,26 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="#">Help Center</a>
+            <a href="#" className={s.disabled}>Help Center</a>
           </li>
         </ul>
       </nav>
-      <ul className={s.list}>
-        <li>
-          <FaApple className={s.download_icon} />
+      <div className={s.list_downloads}>
+        <a className={s.downloads_item} href="#">
+          <FaApple className={s.download_icon1} />
           <div>
             <p>Upload to</p>
             <p>App Store</p>
           </div>
-        </li>
-        <li>
-          <FaGooglePlay className={s.download_icon} />
+        </a>
+        <a className={s.downloads_item} href="#">
+          <FaGooglePlay className={s.download_icon2} />
           <div>
             <p>Upload to</p>
             <p>Google Play</p>
           </div>
-        </li>
-      </ul>
+        </a>
+      </div>
       <div className={s.footer_bottom}>
         <p>Created by Denys Harkusha ©</p>
         <div>

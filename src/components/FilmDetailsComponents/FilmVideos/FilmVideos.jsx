@@ -14,6 +14,7 @@ import { filmVideosThunk } from "../../../redux/filmDetails/filmDetailsThunks";
 //icons
 import { RiMovieFill } from "react-icons/ri";
 import Loader from "../../Loader/Loader";
+import { addVideo } from "../../../redux/lastVideo/lastVideoReducer";
 
 const FilmGallery = ({ filmID }) => {
   //item buttons and navigate
@@ -69,6 +70,12 @@ const FilmGallery = ({ filmID }) => {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                     ></iframe>
+                    <button
+                      onClick={() => dispatch(addVideo({ id, key, name }))}
+                      className={s.addVideo}
+                    >
+                      Add Video
+                    </button>
                   </li>
                 )
             )}

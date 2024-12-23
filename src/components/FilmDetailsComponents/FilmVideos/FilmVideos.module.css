@@ -55,6 +55,22 @@
   align-self: flex-start;
 }
 
+.addVideo{
+  display: block;
+  margin: 10px 0;
+  background-color: rgb(255, 0, 0);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: transform var(--transition-effect);
+}
+
+.addVideo:active,
+.addVideo:hover{
+transform: scale(1.1);
+}
+
 @media screen and (min-width: 480px) {
   .iframeVideo {
     width: 460px;

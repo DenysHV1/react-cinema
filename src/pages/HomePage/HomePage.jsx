@@ -21,6 +21,7 @@ import Loader from "../../components/Loader/Loader";
 import FilmSliderMain from "../../components/FilmSliderMain/FilmSliderMain";
 import { searchUpcoming } from "../../redux/filmsPage/thunkFilteredTopFilms";
 import { selectUpcoming } from "../../redux/filmsPage/selectors";
+import LastVideos from "../../components/LastVideos/LastVideos";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const HomePage = () => {
   return (
     <>
       <HeaderBanner />
+      <LastVideos/>
       {/* <FilmSliderMain list={upcoming}/> */}
       {isLoading && <Loader />}
       {!isError ? (

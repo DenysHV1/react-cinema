@@ -14,6 +14,7 @@ import { isOpenSelector } from "../../../redux/filmsPage/selectors";
 import { closeMenu } from "../../../redux/filmsPage/reducers";
 
 import SearcherFilms from "../../SearcherFilms/SearcherFilms";
+import { loginUser, logoutUser } from "../../../redux/auth/authReducers";
 
 const MobileMenu = () => {
   const sessionId = useSelector(selectSessionIdAuth);
@@ -25,6 +26,9 @@ const MobileMenu = () => {
       ? [s.activeLink, s.navLink].join(" ")
       : [s.unActiveLink, s.navLink].join(" ");
   };
+
+  console.log(sessionId);
+  
 
   return (
     <div
@@ -56,7 +60,7 @@ const MobileMenu = () => {
             </NavLink>
           </li>
           <li>
-          <SearcherFilms />
+            <SearcherFilms />
           </li>
         </ul>
         <ul className={s.bottom_list}>
@@ -72,14 +76,23 @@ const MobileMenu = () => {
               </NavLink>
             </li>
           )}
-          {sessionId && (
+          {!sessionId && (
             <li>
-              <button type="button" className={s.logout_btn}>
+              <button type="button" className={s.logout_btn} onClick={() => dispatch(loginUser())}>
+                login
                 <IoLogOutOutline />
               </button>
             </li>
           )}
-          {!sessionId && (
+          {sessionId && (
+            <li>
+              <button type="button" className={s.logout_btn} onClick={() => dispatch(logoutUser())}>
+                logout
+                <IoLogOutOutline />
+              </button>
+            </li>
+          )}
+          {/* {!sessionId && (
             <li>
               <NavLink
                 to={"/login"}
@@ -100,7 +113,7 @@ const MobileMenu = () => {
                 Register
               </NavLink>
             </li>
-          )}
+          )} */}
         </ul>
       </nav>
     </div>

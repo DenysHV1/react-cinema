@@ -22,6 +22,7 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { addVideo } from "../../../redux/lastVideo/lastVideoReducer";
 
 const Changes = () => {
   const { filmID } = useParams();
@@ -74,8 +75,19 @@ const Changes = () => {
 
                 return (
                   videoKey && (
-                    <SwiperSlide key={id} className={s.videoContainer}>
+                    <SwiperSlide
+                      key={id}
+                      className={s.videoContainer}
+                      onClick={() => {
+                        console.log('fff');
+                        
+                        return dispatch(
+                          addVideo({ id, key: videoKey, name: videoName })
+                        );
+                      }}
+                    >
                       <iframe
+                      style={{ pointerEvents: "none" }}
                         className={s.iframeVideo}
                         src={`https://www.youtube.com/embed/${videoKey}`}
                         title={videoName}
