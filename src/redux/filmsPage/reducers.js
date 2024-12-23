@@ -18,6 +18,7 @@ const initialState = {
   isError: false,
   isOpen: false,
   filterVariant: "PREMIERS",
+  upcoming: [],
 };
 
 const progressIsPending = (state) => {
@@ -94,7 +95,17 @@ const filmsSlice = createSlice({
 
       //todo 6.UPCOMING/TOP---------------------------------
       .addCase(searchUpcoming.pending, progressIsPending)
-      .addCase(searchUpcoming.fulfilled, resultFulfilled)
+      .addCase(searchUpcoming.fulfilled, (state, { payload }) => {
+        state.films = payload.results;
+        if (payload.total_pages > 100) {
+          state.total_pages = 100;
+        } else {
+          state.total_pages = payload.total_pages;
+        }
+        state.upcoming = payload.results
+        state.isLoading = false;
+        state.isError = false;
+      })
       .addCase(searchUpcoming.rejected, resultIsRejected)
       //* 6.UPCOMING BY PAGE/TOP
       .addCase(searchUpcomingByPage.pending, progressIsPending)

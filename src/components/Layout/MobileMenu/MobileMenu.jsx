@@ -13,6 +13,8 @@ import { selectSessionIdAuth } from "../../../redux/auth/authSelectors";
 import { isOpenSelector } from "../../../redux/filmsPage/selectors";
 import { closeMenu } from "../../../redux/filmsPage/reducers";
 
+import SearcherFilms from "../../SearcherFilms/SearcherFilms";
+
 const MobileMenu = () => {
   const sessionId = useSelector(selectSessionIdAuth);
   const isOpenModal = useSelector(isOpenSelector);
@@ -52,6 +54,9 @@ const MobileMenu = () => {
             >
               Films
             </NavLink>
+          </li>
+          <li>
+          <SearcherFilms />
           </li>
         </ul>
         <ul className={s.bottom_list}>

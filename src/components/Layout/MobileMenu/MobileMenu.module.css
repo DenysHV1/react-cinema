@@ -29,7 +29,8 @@
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12),
     0 2px 1px 0 rgba(0, 0, 0, 0.2);
   background: #535353;
-  padding: 72px 72px 24px 72px;
+  padding-left: 24px;
+  /* padding: 72px 72px 24px 72px; */
   transition: transform var(--transition-effect);
   display: flex;
   align-items: flex-start;
@@ -146,6 +147,12 @@ transform: translate(10px);
 .logout_btn > svg{
   width: 30px;
   height: 35px;
+}
+
+@media screen and (min-width: 360px) {
+  .mobileInner {
+    width: 340px;
+  }
 }
 
 @media screen and (min-width: 480px) {

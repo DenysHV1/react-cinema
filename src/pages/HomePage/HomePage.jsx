@@ -18,6 +18,9 @@ import HeaderBanner from "../../components/HeaderBanner/HeaderBanner";
 import FilmsSlider from "../../components/FilmSlider/FilmSlider";
 import NoInfo from "../../components/NoInfo/NoInfo";
 import Loader from "../../components/Loader/Loader";
+import FilmSliderMain from "../../components/FilmSliderMain/FilmSliderMain";
+import { searchUpcoming } from "../../redux/filmsPage/thunkFilteredTopFilms";
+import { selectUpcoming } from "../../redux/filmsPage/selectors";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -26,14 +29,18 @@ const HomePage = () => {
   const isError = useSelector(homePageErrorSelector);
   const isLoading = useSelector(homePageLoadingSelector);
 
+  const upcoming = useSelector(selectUpcoming)
+
   useEffect(() => {
     dispatch(getChangesThunk(1));
     dispatch(getChangesThunk(2));
+    dispatch(searchUpcoming())
   }, [dispatch]);
 
   return (
     <>
       <HeaderBanner />
+      {/* <FilmSliderMain list={upcoming}/> */}
       {isLoading && <Loader />}
       {!isError ? (
         <section>
