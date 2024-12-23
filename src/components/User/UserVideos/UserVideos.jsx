@@ -1,4 +1,4 @@
-import { selectLastVideos } from "../../../redux/lastVideo/lastVideoReducer";
+import { selectLastVideos } from "../../../redux/User/userReducer";
 import s from "./UserVideos.module.css";
 
 //hooks
@@ -29,7 +29,7 @@ const UserVideos = () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
-				  <p className={s.video_name}>{name}</p>
+                  <p className={s.video_name}>{name}</p>
                 </li>
               )
           )}

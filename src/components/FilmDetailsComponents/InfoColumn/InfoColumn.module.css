@@ -153,6 +153,34 @@
   color: var(--color-accent);
 }
 
+.addFilm {
+  color: white;
+  background-color: var(--color-accent);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  transition: transform var(--transition-effect), background-color var(--transition-effect);
+}
+
+.addFilm:hover,
+.addFilm:active {
+  transform: scale(1.1);
+  background-color: purple;
+
+}
+
+.addFilm_icon{
+  width: 20px;
+  height: auto;
+}
+
 @media screen and (min-width: 768px) {
   .top_info {
     flex-direction: row;

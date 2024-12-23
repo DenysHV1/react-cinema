@@ -22,6 +22,7 @@ import FilmSliderMain from "../../components/FilmSliderMain/FilmSliderMain";
 import { searchUpcoming } from "../../redux/filmsPage/thunkFilteredTopFilms";
 import { selectUpcoming } from "../../redux/filmsPage/selectors";
 import LastVideos from "../../components/LastVideos/LastVideos";
+import TopFilmsSlider from "../../components/TopFilmsSlider/TopFilmsSlider";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const HomePage = () => {
       {!isError ? (
         <section>
           <h1 className={s.title}>Now Playing</h1>
+          <TopFilmsSlider list={changes} />
           <FilmsSlider list={changes} />
           <FilmsSlider list={changes2} />
         </section>

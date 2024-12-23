@@ -2,13 +2,21 @@ import { FcLike } from "react-icons/fc";
 import { emptyPoster, imgLink } from "../../../redux/helpSettings";
 import s from "./InfoColumn.module.css";
 import StarsRating from "../StarsRating/StarsRating";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filmDetailsSelector } from "../../../redux/filmDetails/filmDetailsSelectors";
+import { addFilm } from "../../../redux/User/userReducer";
+import { HiPlus } from "react-icons/hi";
+import iziToast from "izitoast";
+
+import { selectSessionIdAuth } from "../../../redux/auth/authSelectors";
 
 const InfoColumn = () => {
   const film = useSelector(filmDetailsSelector);
+  const dispatch = useDispatch();
+  const sessionId = useSelector(selectSessionIdAuth);
 
   const {
+    id,
     budget,
     genres,
     original_title,
@@ -29,6 +37,19 @@ const InfoColumn = () => {
     ? production_countries
     : origin_country;
 
+  const handleAddFilm = () => {
+    iziToast.success({
+      title: "Success!",
+      message: `The movie "${title}" has been successfully added to your list.`,
+      position: "topRight",
+      timeout: 3000,
+      transitionIn: "fadeIn",
+      transitionOut: "fadeOut",
+      color: '#03a703'
+    });
+    dispatch(addFilm({ id, title, poster_path, vote_average, popularity }));
+  };
+
   return (
     <div className={s.top_info}>
       <div className={s.poster_container}>
@@ -36,6 +57,11 @@ const InfoColumn = () => {
           src={poster_path ? `${imgLink}${poster_path}` : emptyPoster}
           alt={title ? title : original_title}
         />
+        {sessionId && (
+          <button onClick={handleAddFilm} className={s.addFilm}>
+            <HiPlus className={s.addFilm_icon}/>
+          </button>
+        )}
         {popularity && (
           <div className={s.popularity_container}>
             <FcLike className={s.popularity_like} />

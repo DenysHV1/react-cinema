@@ -4,7 +4,7 @@ import s from "./LastVideos.module.css";
 import { useSelector } from "react-redux";
 
 //redux
-
+import { selectLastVideos } from "../../redux/User/userReducer";
 //components
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,12 +12,12 @@ import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { selectLastVideos } from "../../redux/lastVideo/lastVideoReducer";
+
+
 
 const LastVideos = () => {
   const lastVideos = useSelector(selectLastVideos);
 
-  console.log(lastVideos);
 
   return (
     <>

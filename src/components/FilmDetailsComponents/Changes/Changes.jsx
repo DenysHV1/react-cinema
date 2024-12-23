@@ -12,6 +12,7 @@ import {
   filmIsLoadingSelector,
 } from "../../../redux/filmDetails/filmDetailsSelectors";
 import { getChangesThunk } from "../../../redux/filmDetails/filmDetailsThunks";
+import { addVideo } from "../../../redux/User/userReducer";
 
 //components
 import Loader from "../../Loader/Loader";
@@ -22,7 +23,8 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { addVideo } from "../../../redux/lastVideo/lastVideoReducer";
+import iziToast from "izitoast";
+import { selectSessionIdAuth } from "../../../redux/auth/authSelectors";
 
 const Changes = () => {
   const { filmID } = useParams();
@@ -31,6 +33,7 @@ const Changes = () => {
   const changes = useSelector(changesSelector);
   const isLoading = useSelector(filmIsLoadingSelector);
   const isError = useSelector(filmDetailsErrorSelector);
+  const sessionId = useSelector(selectSessionIdAuth)
 
   useEffect(() => {
     dispatch(getChangesThunk(filmID));
@@ -85,14 +88,25 @@ const Changes = () => {
                         allowFullScreen
                       ></iframe>
                       <p className={s.video_name}>{videoName}</p>
-                      <button
-                      className={s.addVideo}
-                        onClick={() =>
-                          dispatch(
+                      {sessionId && <button
+                        className={s.addVideo}
+                        onClick={() => {
+                          iziToast.success({
+                            title: "Success!",
+                            message: `The movie "${videoName}" has been successfully added to your list.`,
+                            position: "topRight",
+                            timeout: 3000,
+                            transitionIn: "fadeIn",
+                            transitionOut: "fadeOut",
+                            color: "#03a703",
+                          });
+                          return dispatch(
                             addVideo({ id, key: videoKey, name: videoName })
-                          )
-                        }
-                      >Add video</button>
+                          );
+                        }}
+                      >
+                        Add video
+                      </button>}
                       {isLoading && <Loader />}
                     </SwiperSlide>
                   )

@@ -18,13 +18,13 @@ import { searchReducer } from "./searchPage/reducer";
 import { companyReducer } from "./companyPage/reducers";
 import { homePageReducer } from "./homePage/homeReducer";
 import { authReducer } from "./auth/authReducers";
-import { lastVideoReducer } from "./lastVideo/lastVideoReducer";
+import { userReducer } from "./User/userReducer";
 
 
 const rootPersistConfig = {
   key: "root",
   storage,
-  whitelist: ["films", "filmDetails", "reviews", "search", "lastVideos", "auth"], // Какие редьюсеры сохранять
+  whitelist: ["films", "filmDetails", "reviews", "search", "user", "auth"],
 };
 
 const rootReducer = combineReducers({
@@ -35,7 +35,7 @@ const rootReducer = combineReducers({
   company: companyReducer,
   home: homePageReducer,
   auth: authReducer,
-  lastVideos: lastVideoReducer,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);

@@ -6,6 +6,7 @@ import Loader from "./Loader/Loader";
 import Changes from "./FilmDetailsComponents/Changes/Changes";
 import Cast from "./FilmDetailsComponents/Cast/Cast";
 import UserVideos from "./User/UserVideos/UserVideos";
+import UserFilms from "./User/UserFilms/UserFilms";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const FilmDetailsPage = lazy(() =>
@@ -44,6 +45,7 @@ function App() {
             <Route path="register" element={<RegistrationPage />} /> */}
             <Route path="account" element={<FavoritesPage />}>
               <Route path="userVideos" element={<UserVideos />} />
+              <Route path="userFilms" element={<UserFilms />} />
             </Route>
             <Route path="*" element={<Navigate to={"/"} />} />
           </Route>

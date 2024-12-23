@@ -14,7 +14,9 @@ import { filmVideosThunk } from "../../../redux/filmDetails/filmDetailsThunks";
 //icons
 import { RiMovieFill } from "react-icons/ri";
 import Loader from "../../Loader/Loader";
-import { addVideo } from "../../../redux/lastVideo/lastVideoReducer";
+import { addVideo } from "../../../redux/User/userReducer";
+import iziToast from "izitoast";
+import { selectSessionIdAuth } from "../../../redux/auth/authSelectors";
 
 const FilmGallery = ({ filmID }) => {
   //item buttons and navigate
@@ -25,6 +27,7 @@ const FilmGallery = ({ filmID }) => {
   const dispatch = useDispatch();
   const videos = useSelector(filmVideosSelector);
   const isLoading = useSelector(filmIsLoadingSelector);
+  const sessionId = useSelector(selectSessionIdAuth);
 
   useEffect(() => {
     dispatch(filmVideosThunk(filmID));
@@ -70,12 +73,27 @@ const FilmGallery = ({ filmID }) => {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                     ></iframe>
-                    <button
-                      onClick={() => dispatch(addVideo({ id, key, name }))}
-                      className={s.addVideo}
-                    >
-                      Add Video
-                    </button>
+                    {sessionId && (
+                      <button
+                        onClick={() => {
+                          iziToast.success({
+                            title: "Success!",
+                            message: `The movie "${name}" has been successfully added to your list.`,
+                            position: "topRight",
+                            timeout: 3000,
+                            transitionIn: "fadeIn",
+                            transitionOut: "fadeOut",
+                            color: "#03a703",
+                          });
+                          return dispatch(
+                            addVideo({ id, key: key, name: name })
+                          );
+                        }}
+                        className={s.addVideo}
+                      >
+                        Add Video
+                      </button>
+                    )}
                   </li>
                 )
             )}

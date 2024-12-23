@@ -4,7 +4,7 @@
 	padding: 20px 40px;
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: space-evenly;
 	width: 104%;
 	margin-left: -2%;
 }
