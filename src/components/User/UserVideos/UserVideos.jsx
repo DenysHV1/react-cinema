@@ -11,8 +11,6 @@ import { useSelector } from "react-redux";
 const UserVideos = () => {
   const lastVideos = useSelector(selectLastVideos);
 
-  console.log(lastVideos);
-
   return (
     <>
       <ul className={s.list}>
