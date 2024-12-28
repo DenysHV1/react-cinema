@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 
+// import InfiniteScroll from "react-infinite-scroll-component";
+
 //redux
 import {
   filmsSelector,
