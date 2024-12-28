@@ -46,7 +46,7 @@ const Cast = () => {
       setElements(8);
     }
   };
-
+  
   return (
     <>
       {isLoading && <Loader />}

@@ -1,4 +1,6 @@
 import s from "./Reviews.module.css";
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDislike } from "react-icons/ai";
 
 //hooks
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +26,8 @@ const Reviews = ({ filmID }) => {
   useEffect(() => {
     dispatch(reviewsThunk(filmID));
   }, [dispatch, filmID]);
+
+  console.log(reviews);
 
   return (
     <>
@@ -51,19 +55,25 @@ const Reviews = ({ filmID }) => {
                           alt={author_details.name || author}
                           className={s.img}
                         />
-                        <p className={s.rating}>
-                          Rating:
-                          <span>{author_details.rating || "0"}</span>
-                        </p>
                       </Link>
                     </div>
-                    <div className={s.name_data}>
+                    <div className={s.bottom_info}>
                       <p className={s.name}>{author_details.name || author}</p>
                       <p className={s.data}>
                         {created_at ? created_at.slice(0, 10) : "2024.12.17"}
                       </p>
+
+                      <p className={s.bottom_info}>{content}</p>
+                      <div className={s.rating_container}>
+                        <button type="button" className={s.rating}>
+                          <AiOutlineLike className={s.like} />
+                          <p>{author_details.rating || "0"}</p>
+                        </button>
+                        <button type="button" className={s.rating}>
+                          <AiOutlineDislike className={s.like} />
+                        </button>
+                      </div>
                     </div>
-                    <p className={s.bottom_info}>{content}</p>
                   </li>
                 )
               )}
