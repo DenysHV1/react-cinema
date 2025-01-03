@@ -12,6 +12,6 @@ export const emptyUserImg = 'https://as1.ftcdn.net/v2/jpg/03/53/11/00/1000_F_353
  
 
 export const BASE_URL = "https://api.themoviedb.org";
-export const KEY = import.meta.env.VITE_API_KEY;
+export const KEY = "ee3e9c5f4ba904ebcf317d566e2eec32";
 
-console.log(import.meta.env.VITE_API_KEY);
+// console.log(import.meta.env.VITE_API_KEY);
