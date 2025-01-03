@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL, KEY } from "../helpSettings";
-
+import { KEY, BASE_URL } from "../helpSettings";
 
 //2. Popular
 export const searchPopular = createAsyncThunk(
