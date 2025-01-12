@@ -43,8 +43,12 @@ const resultFulfilled = (state, { payload }) => {
 };
 
 const resultFulfilledByPage = (state, { payload }) => {
-  state.films = [state.films, ...payload.results];
-  // state.films.push(...payload.results);
+  state.films = [
+    ...state.films,
+    ...payload.results.filter(
+      (newFilm) => !state.films.some((existingFilm) => existingFilm.id === newFilm.id)
+    ),
+  ];
   state.page = payload.page;
   state.isLoading = false;
   state.isError = false;
@@ -66,49 +70,37 @@ const filmsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
-      //todo 2. PREMIERS FILMS/TOP------------------------------
+      // PREMIERS FILMS
       .addCase(searchPremiersFilms.pending, progressIsPending)
       .addCase(searchPremiersFilms.fulfilled, resultFulfilled)
       .addCase(searchPremiersFilms.rejected, resultIsRejected)
-      //*2. PREMIERS FILMS BY PAGE/TOP
       .addCase(searchPremiersFilmsByPage.pending, progressIsPending)
       .addCase(searchPremiersFilmsByPage.fulfilled, resultFulfilledByPage)
       .addCase(searchPremiersFilmsByPage.rejected, resultIsRejected)
-
-      //todo 4. POPULAR/TOP---------------------------------
+      // POPULAR FILMS
       .addCase(searchPopular.pending, progressIsPending)
       .addCase(searchPopular.fulfilled, resultFulfilled)
       .addCase(searchPopular.rejected, resultIsRejected)
-      //* 4. POPULAR BY PAGE/TOP
       .addCase(searchPopularByPage.pending, progressIsPending)
       .addCase(searchPopularByPage.fulfilled, resultFulfilledByPage)
       .addCase(searchPopularByPage.rejected, resultIsRejected)
-
-      //todo 5.TOP RATED/TOP---------------------------------
+      // TOP RATED FILMS
       .addCase(searchTopRated.pending, progressIsPending)
       .addCase(searchTopRated.fulfilled, resultFulfilled)
       .addCase(searchTopRated.rejected, resultIsRejected)
-      //* 5.TOP RATED BY PAGE/TOP
       .addCase(searchTopRatedByPage.pending, progressIsPending)
       .addCase(searchTopRatedByPage.fulfilled, resultFulfilledByPage)
       .addCase(searchTopRatedByPage.rejected, resultIsRejected)
-
-      //todo 6.UPCOMING/TOP---------------------------------
+      // UPCOMING FILMS
       .addCase(searchUpcoming.pending, progressIsPending)
       .addCase(searchUpcoming.fulfilled, (state, { payload }) => {
         state.films = payload.results;
-        if (payload.total_pages > 100) {
-          state.total_pages = 100;
-        } else {
-          state.total_pages = payload.total_pages;
-        }
-        state.upcoming = payload.results
+        state.total_pages = Math.min(payload.total_pages, 100);
+        state.upcoming = [...state.upcoming, ...payload.results]; // Пагинация
         state.isLoading = false;
         state.isError = false;
       })
       .addCase(searchUpcoming.rejected, resultIsRejected)
-      //* 6.UPCOMING BY PAGE/TOP
       .addCase(searchUpcomingByPage.pending, progressIsPending)
       .addCase(searchUpcomingByPage.fulfilled, resultFulfilledByPage)
       .addCase(searchUpcomingByPage.rejected, resultIsRejected);
