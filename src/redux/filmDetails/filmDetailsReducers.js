@@ -80,14 +80,6 @@ const filmDetailsSlice = createSlice({
       })
       .addCase(reviewsThunk.rejected, filmDetailsRejected)
 
-      // .addCase(getTestThunk.pending, filmDetailsPending)
-      // .addCase(getTestThunk.fulfilled, (state, { payload }) => {
-      //   state.filmDetailsError = false;
-      //   state.test = payload;
-      //   state.isLoading = false;
-      // })
-      // .addCase(getTestThunk.rejected, filmDetailsRejected)
-
       .addCase(getKeywordsThunk.pending, filmDetailsPending)
       .addCase(getKeywordsThunk.fulfilled, (state, { payload }) => {
         state.filmDetailsError = false;

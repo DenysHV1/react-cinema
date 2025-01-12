@@ -1,7 +1,10 @@
 import s from "./ButtonsListCinema.module.css";
 
 //redux
-import { filterVariantSelector } from "../../../redux/filmsPage/selectors";
+import {
+  filterVariantSelector,
+  totalPagesSelector,
+} from "../../../redux/filmsPage/selectors";
 import {
   searchPopularByPage,
   searchTopRatedByPage,
@@ -14,12 +17,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const ButtonsList = () => {
+  const totalPages = useSelector(totalPagesSelector);
   const variant = useSelector(filterVariantSelector);
 
   const [pages, setPages] = useState(1);
   const triggerRef = useRef(null);
   const dispatch = useDispatch();
 
+  // Мемоизация действий для каждого фильтра
   const variantActions = useMemo(
     () => ({
       POPULAR: searchPopularByPage,
@@ -30,30 +35,41 @@ const ButtonsList = () => {
     []
   );
 
+  // Обработчик изменения страницы
   const handleChangePage = useCallback(
     (page) => {
       const action = variantActions[variant];
-      dispatch(action(page));
+      if (action) {
+        dispatch(action(page));
+      } else {
+        console.error("Unknown variant:", variant);
+      }
     },
     [dispatch, variant, variantActions]
   );
 
+  // Сброс страницы при изменении фильтра
   useEffect(() => {
     setPages(1);
     handleChangePage(1);
   }, [variant, handleChangePage]);
 
+  // Создание и отслеживание наблюдателя для загрузки следующей страницы
   const observeIntersection = useCallback(
     (entries) => {
       if (entries[0].isIntersecting) {
         setPages((prev) => {
-          const newPage = prev + 1;
-          handleChangePage(newPage);
+          let newPage;
+          if (prev < totalPages) {
+            newPage = prev + 1;
+            handleChangePage(newPage);
+          }
+
           return newPage;
         });
       }
     },
-    [handleChangePage]
+    [handleChangePage, totalPages]
   );
 
   useEffect(() => {
@@ -77,9 +93,6 @@ const ButtonsList = () => {
       }
     };
   }, [observeIntersection]);
-
-  console.log(pages);
-  
 
   return <div ref={triggerRef} className={s.buttons_container}></div>;
 };

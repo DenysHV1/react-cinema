@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import s from "./PopularFilmsFilter.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { filterVariantSelector } from "../../../redux/filmsPage/selectors";
@@ -13,6 +13,7 @@ import { closeMenu, setVariant } from "../../../redux/filmsPage/reducers";
 const PopularFilmsFilter = () => {
   const dispatch = useDispatch();
   const variant = useSelector(filterVariantSelector);
+  const [active, setActive] = useState("PREMIERS");
 
   useEffect(() => {
     if (variant) {
@@ -36,26 +37,34 @@ const PopularFilmsFilter = () => {
     }
   }, [variant, dispatch]);
 
+  const handleButtonClick = (filterVariant) => {
+    dispatch(setVariant(filterVariant));
+    setActive(filterVariant);
+  };
+
   return (
     <div className={s.filter_container} onClick={() => dispatch(closeMenu())}>
       <button
-        onClick={() => dispatch(setVariant("PREMIERS"))}
-        className={s.btn}
+        onClick={() => handleButtonClick("PREMIERS")}
+        className={`${s.btn} ${active === "PREMIERS" ? s.active : ""}`}
       >
         Premiers
       </button>
-      <button onClick={() => dispatch(setVariant("POPULAR"))} className={s.btn}>
+      <button
+        onClick={() => handleButtonClick("POPULAR")}
+        className={`${s.btn} ${active === "POPULAR" ? s.active : ""}`}
+      >
         Popular
       </button>
       <button
-        onClick={() => dispatch(setVariant("TOP_RATED"))}
-        className={s.btn}
+        onClick={() => handleButtonClick("TOP_RATED")}
+        className={`${s.btn} ${active === "TOP_RATED" ? s.active : ""}`}
       >
         Top Rated
       </button>
       <button
-        onClick={() => dispatch(setVariant("UPCOMING"))}
-        className={s.btn}
+        onClick={() => handleButtonClick("UPCOMING")}
+        className={`${s.btn} ${active === "UPCOMING" ? s.active : ""}`}
       >
         Upcoming
       </button>

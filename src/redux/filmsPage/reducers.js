@@ -18,7 +18,6 @@ const initialState = {
   isError: false,
   isOpen: false,
   filterVariant: "PREMIERS",
-  upcoming: [],
 };
 
 const progressIsPending = (state) => {
@@ -33,11 +32,7 @@ const resultIsRejected = (state) => {
 
 const resultFulfilled = (state, { payload }) => {
   state.films = payload.results;
-  if (payload.total_pages > 100) {
-    state.total_pages = 100;
-  } else {
-    state.total_pages = payload.total_pages;
-  }
+  state.total_pages = payload.total_pages;
   state.isLoading = false;
   state.isError = false;
 };
